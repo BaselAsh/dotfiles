@@ -1,0 +1,1 @@
+If I want to use this config for a new pc I have to download everything in the requirements.txt file using (pip)

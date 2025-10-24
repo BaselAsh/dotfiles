@@ -109,7 +109,7 @@ return {
                 local root_dir =
                     vim.fs.dirname(vim.fs.find({ "pyproject.toml", "setup.py", ".git" }, { upward = true })[1])
                 start_server("pylsp", {
-                    cmd = { "/home/baselash/.venv/bin/python", "-m", "pylsp" },
+                    cmd = { "/home/baselash/.config/nvim/venv/bin/python", "-m", "pylsp" },
                     root_files = { "pyproject.toml", "setup.py", ".git" },
                     settings = {
                         pylsp = {
