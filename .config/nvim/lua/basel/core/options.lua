@@ -6,10 +6,22 @@ opt.relativenumber = true
 opt.number = true
 
 -- Tabs & indentation
+-- For most programming languages
 opt.tabstop = 4
 opt.shiftwidth = 4
+opt.softtabstop = 4
 opt.expandtab = true
 opt.autoindent = true
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "c", "cpp" },
+    callback = function()
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+        vim.opt_local.softtabstop = 2
+    end
+})
+
 
 opt.wrap = false
 

@@ -161,7 +161,16 @@ return {
                 })
             end,
         })
-
+        -- CSS / SCSS / Less
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = { "css", "scss", "less" },
+            callback = function()
+                start_server("cssls", {
+                    cmd = { "vscode-css-language-server", "--stdio" }, -- This is the correct command
+                    root_files = { "package.json", ".git" },
+                })
+            end,
+        })
         -- Lua (Neovim config)
         vim.api.nvim_create_autocmd("FileType", {
             pattern = "lua",
