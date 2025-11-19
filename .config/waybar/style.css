@@ -1,86 +1,147 @@
 * {
-  /* Use a Nerd Font for icons */
-  font-family: "CaskaydiaCove Nerd Font", FontAwesome, sans-serif;
-  font-size: 15px;
   border: none;
-  border-radius: 0;
+  border-radius: 20px;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 14px;
+  min-height: 0;
 }
 
 window#waybar {
+  background: rgba(21, 22, 30, 0.85);
+  color: #cdd6f4;
+  border-bottom: 2px solid #89b4fa;
+}
+
+#workspaces {
   background: #1e1e2e;
+  margin: 5px;
+  padding: 0 5px;
+  border-radius: 16px;
+  color: #89b4fa; /* Blue text */
+}
+
+#workspaces button {
+  padding: 0 5px;
+  background: transparent;
   color: #cdd6f4;
 }
 
-/* --- Module Styling --- */
-.modules-left > *,
-.modules-center > *,
-.modules-right > * {
-  padding: 0 10px;
-}
-
-/* --- Workspaces --- */
-#workspaces button {
-  padding: 2px 5px;
-  color: #a6adc8;
-}
-
 #workspaces button.active {
-  color: #a6e3a1; /* Green for active */
-}
-
-#workspaces button.urgent {
-  color: #f38ba8; /* Red for urgent */
+  color: #89b4fa; /* Active workspace is blue */
+  font-weight: bold;
 }
 
 #workspaces button:hover {
   background: #313244;
-  color: #cdd6f4;
+  color: #89b4fa;
 }
 
-/* --- Other Modules --- */
+#custom-launcher,
+#custom-power {
+  background-color: #89b4fa; /* Blue background */
+  color: #1e1e2e; /* Dark text */
+  padding: 0 15px;
+  margin: 5px;
+  border-radius: 16px;
+}
+
 #clock,
-#pulseaudio,
-#network,
+#battery,
 #cpu,
 #memory,
-#battery,
+#disk,
+#network,
+#pulseaudio,
+#bluetooth,
+#backlight,
+#custom-notification,
+#network,
 #tray {
-  padding: 5px 10px;
+  background-color: #1e1e2e;
+  padding: 0px 10px;
+  margin: 5px 3px;
+  /* color: #cdd6f4; */
+  color: #89b4fa;
+  font-size: 12px;
+  font-weight: bold;
 }
 
-/* --- Module States (Colors) --- */
+#custom-notification {
+  border-radius: 16px;
+  margin-right: 5px;
+  padding-right: 5px;
+}
 
-#pulseaudio {
+/* Creating a continuous look for the right modules */
+#network {
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
   color: #89b4fa; /* Blue */
 }
+
+#pulseaudio {
+  color: #89b4fa;
+  padding: 0px 10px;
+  font-weight: bold;
+}
+
 #pulseaudio.muted {
-  color: #6c7086;
+  background-color: #ffa500;
+  color: #e6e6e6;
 }
 
-#network {
-  color: #a6e3a1; /* Green */
-}
-#network.disconnected {
-  color: #f38ba8; /* Red */
+#bluetooth {
+  color: #89b4fa;
+  padding: 0px 10px;
 }
 
-#cpu {
-  color: #f9e2af; /* Yellow */
+#bluetooth.connected {
+  background-color: #0056b3;
+  color: #ffffff;
 }
 
-#memory {
-  color: #cba6f7; /* Mauve */
+#bluetooth.disabled,
+#bluetooth.off {
+  background-color: #6c757d;
+  color: #e6e6e6;
+}
+
+#backlight {
+  color: #89b4fa;
+  padding: 0 10px;
+  border-radius: 15px;
 }
 
 #battery {
-  color: #b4befe; /* Lavender */
+  color: #a6e3a1; /* Green for battery, changes logic usually handled in config */
 }
-#battery.charging {
-  color: #a6e3a1; /* Green */
+
+#battery.charging,
+#battery.plugged {
+  color: #f9e2af;
 }
-#battery.warning {
-  color: #f9e2af; /* Yellow */
+
+#battery.critical:not(.charging) {
+  background-color: #f38ba8;
+  color: #1e1e2e;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
-#battery.critical {
-  color: #f38ba8; /* Red */
+
+#custom-notification {
+  padding-right: 15px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  margin-right: 10px;
+  color: #89b4fa;
+}
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: #000000;
+  }
 }

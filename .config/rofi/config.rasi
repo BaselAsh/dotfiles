@@ -1,0 +1,158 @@
+configuration {
+    modi: "drun,run";
+    show-icons: true;
+    font: "JetBrainsMono Nerd Font 12";
+    display-drun: "   Apps ";
+    display-run: "   Run ";
+    /* Disable history to keep it clean */
+    disable-history: false;
+}
+
+/* --- COLOR PALETTE --- */
+* {
+    background:     #1e1e2e;
+    background-alt: #313244; /* Slightly lighter for input bar */
+    foreground:     #cdd6f4; /* Bright White-Grey text */
+    selected:       #007bff; /* YOUR MAIN BLUE */
+    active:         #007bff;
+    urgent:         #f38ba8;
+}
+
+window {
+    /* Center the window */
+    transparency: "real";
+    location: center;
+    anchor: center;
+    fullscreen: false;
+    width: 600px;
+    x-offset: 0px;
+    y-offset: 0px;
+
+    /* Border and Color */
+    enabled: true;
+    margin: 0px;
+    padding: 0px;
+    border: 3px solid;
+    border-radius: 12px;
+    border-color: @selected;
+    background-color: @background;
+    cursor: "default";
+}
+
+mainbox {
+    enabled: true;
+    spacing: 10px;
+    margin: 0px;
+    padding: 20px;
+    border: 0px solid;
+    border-radius: 0px 0px 0px 0px;
+    border-color: @selected;
+    background-color: transparent;
+    children: [ "inputbar", "listview" ];
+}
+
+/* --- INPUT BAR (Search Box) --- */
+inputbar {
+    enabled: true;
+    spacing: 10px;
+    margin: 0px;
+    padding: 12px;
+    border: 0px solid;
+    border-radius: 10px;
+    border-color: @selected;
+    background-color: @background-alt; /* Lighter background for search */
+    text-color: @foreground;
+    children: [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled: true;
+    background-color: inherit;
+    text-color: inherit;
+}
+
+textbox-prompt-colon {
+    enabled: true;
+    expand: false;
+    str: "::";
+    background-color: inherit;
+    text-color: inherit;
+}
+
+entry {
+    enabled: true;
+    background-color: inherit;
+    text-color: inherit;
+    cursor: text;
+    placeholder: "Search...";
+    placeholder-color: inherit;
+}
+
+/* --- LIST VIEW (App List) --- */
+listview {
+    enabled: true;
+    columns: 1;
+    lines: 8; /* Show 8 apps at a time */
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+    layout: vertical;
+    reverse: false;
+    fixed-height: true;
+    fixed-columns: true;
+    
+    spacing: 5px;
+    margin: 0px;
+    padding: 0px;
+    border: 0px solid;
+    border-radius: 0px;
+    border-color: @selected;
+    background-color: transparent;
+    text-color: @foreground;
+    cursor: "default";
+}
+
+/* --- ELEMENTS (Individual Items) --- */
+element {
+    enabled: true;
+    spacing: 10px;
+    margin: 0px;
+    padding: 10px;
+    border: 0px solid;
+    border-radius: 8px;
+    border-color: @selected;
+    background-color: transparent;
+    text-color: @foreground;
+    cursor: pointer;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element selected.normal {
+    background-color: @selected; /* Blue Background */
+    text-color: #ffffff;       /* Pure White Text */
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element-icon {
+    background-color: transparent;
+    text-color: inherit;
+    size: 32px;
+    cursor: inherit;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    highlight: inherit;
+    cursor: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}

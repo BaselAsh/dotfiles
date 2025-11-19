@@ -1,0 +1,83 @@
+configuration {
+    show-icons: true;
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+* {
+    bg-col: #1e1e2e;
+    bg-col-light: #1e1e2e;
+    border-col: #007bff; /* Main Blue */
+    selected-col: #007bff;
+    blue: #89b4fa;
+    fg-col: #cdd6f4;
+    fg-col2: #f38ba8;
+    
+    width: 800; /* Wider window for the grid */
+}
+
+window {
+    width: 1000px;
+    height: 700px;
+    border: 3px;
+    border-color: @border-col;
+    background-color: @bg-col;
+    border-radius: 15px;
+}
+
+mainbox {
+    background-color: @bg-col;
+    children: [inputbar, listview];
+}
+
+inputbar {
+    children: [entry];
+    background-color: @bg-col;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 10px 0px 10px;
+    border: 0px 0px 2px 0px;
+    border-color: @border-col;
+}
+
+entry {
+    padding: 6px;
+    text-color: @fg-col;
+    background-color: @bg-col;
+    placeholder: "Search Clipboard...";
+    placeholder-color: #6c7086;
+}
+
+listview {
+    border: 0px;
+    padding: 20px;
+    margin: 10px;
+    columns: 3; /* Two columns side by side */
+    lines: 3;
+    background-color: @bg-col;
+}
+
+element {
+    padding: 10px;
+    background-color: @bg-col;
+    text-color: @fg-col;
+    orientation: vertical; /* Puts text BELOW the icon */
+    border-radius: 10px;
+}
+
+element-icon {
+    size: 240px; /* HUGE icons */
+    horizontal-align: 0.5;
+}
+
+element-text {
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element selected {
+    background-color: @selected-col; /* Blue background when selected */
+    text-color: #ffffff;
+    border: 0px;
+}

@@ -13,12 +13,17 @@ opt.softtabstop = 4
 opt.expandtab = true
 opt.autoindent = true
 
+local indent_group = vim.api.nvim_create_augroup("FileTypeIndentSettings", { clear = true })
+
+
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "c", "cpp" },
+    pattern = { "c", "cpp", "html", "css", "djangohtml", "javascript", "typescript", "json", "dart", "ruby" },
+    group = indent_group,
     callback = function()
         vim.opt_local.shiftwidth = 2
         vim.opt_local.tabstop = 2
         vim.opt_local.softtabstop = 2
+        vim.opt_local.expandtab = true
     end
 })
 
