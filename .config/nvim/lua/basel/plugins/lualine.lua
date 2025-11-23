@@ -6,14 +6,15 @@ return {
         local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 
         local colors = {
-            blue = "#7FBBB3",
-            green = "#FF61EF",
-            violet = "#D699B6",
-            yellow = "#D8A657",
-            red = "#E67E80",
-            fg = "#D3C6AA",
-            bg = "#2B3339",
-            inactive_bg = "#2B3339",
+            blue          = "#89ddff", -- Poimandres Blue/Cyan
+            green         = "#5de4c7", -- Poimandres Teal
+            violet        = "#fcc5e9", -- Poimandres Pink
+            yellow        = "#fffac2", -- Poimandres Pale Yellow
+            red           = "#d0679d", -- Poimandres Red
+            fg            = "#a6accd", -- Poimandres Foreground
+            bg            = "#1b1e28", -- Poimandres Dark Background
+            inactive_bg   = "#171922", -- Slightly darker for inactive
+            semilightgray = "#767c9d", -- Added this (was missing in your original code)
         }
 
         local my_lualine_theme = {
@@ -78,7 +79,7 @@ return {
                     {
                         lazy_status.updates,
                         cond = lazy_status.has_updates,
-                        color = { fg = "#ff9e64" },
+                        color = { fg = colors.yellow },
                     },
                     { "encoding" },
                     { "fileformat" },

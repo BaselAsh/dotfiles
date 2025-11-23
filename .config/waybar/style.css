@@ -3,6 +3,7 @@
   border-radius: 20px;
   font-family: "JetBrainsMono Nerd Font";
   font-size: 14px;
+  font-weight: bold;
   min-height: 0;
 }
 
@@ -62,7 +63,6 @@ window#waybar {
   margin: 5px 3px;
   /* color: #cdd6f4; */
   color: #89b4fa;
-  font-size: 12px;
   font-weight: bold;
 }
 

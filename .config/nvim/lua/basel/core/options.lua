@@ -17,13 +17,14 @@ local indent_group = vim.api.nvim_create_augroup("FileTypeIndentSettings", { cle
 
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "c", "cpp", "html", "css", "djangohtml", "javascript", "typescript", "json", "dart", "ruby" },
+    pattern = { "html", "css", "djangohtml", "javascript", "typescript", "json", "dart", "ruby" },
     group = indent_group,
     callback = function()
         vim.opt_local.shiftwidth = 2
         vim.opt_local.tabstop = 2
         vim.opt_local.softtabstop = 2
         vim.opt_local.expandtab = true
+        vim.opt_local.autoindent = true
     end
 })
 
@@ -52,3 +53,6 @@ opt.splitright = true
 opt.splitbelow = true
 
 opt.scrolloff = 10
+
+-- Remove ~ remove end of file buffer
+opt.fillchars = { eob = " " }

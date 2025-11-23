@@ -1,19 +1,15 @@
 return {
-	"rebelot/kanagawa.nvim",
-	version = false,
-	lazy = false,
-	priority = 1000,
-	config = function()
-		require("kanagawa").setup({
-			-- My config here
-			undercurl = true,
-			commandStyle = { italic = true },
-			colors = {
-				palette = {},
-				themes = { wave = {}, lotus = {}, dragon = {}, all = {} },
-			},
-			theme = "dragon",
-		})
-		vim.cmd("colorscheme kanagawa-dragon")
-	end,
+    "olivercederborg/poimandres.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+        require("poimandres").setup({
+            bold_vert_split = true,
+            dim_nc_background = true,
+            disable_background = false,
+            disable_float_background = false,
+            dark_variant = "main",
+        })
+        vim.cmd("colorscheme poimandres")
+    end,
 }

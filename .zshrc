@@ -62,8 +62,6 @@ PROMPT="%~ >> "
 
 
 
-# Clear Cache
-alias clear-cache="yay -Scc"
 
 
 # For backing-up Very Important files and directories
@@ -77,7 +75,7 @@ alias home="cd ~"
 alias n="nvim"
 alias myprojects="cd /mnt/d/myproject/"
 alias section="cd /mnt/d/myproject/section/"
-alias format-folder="/usr/bin/clang-format --style GNU --dump-config > .clang-format"
+alias format-folder="/usr/bin/clang-format -style=llvm --dump-config > .clang-format"
 alias zconfig="nvim /home/baselash/.zshrc"
 alias zsource="exec zsh"
 # alias minecraft="java -jar /home/baselash/Downloads/TLauncher.v10/TLauncher.jar"
@@ -93,6 +91,7 @@ alias hypr-config="n ~/.config/hypr/hyprland.conf"
 alias 1disk="cd /mnt/Data_1/"
 alias 2disk="cd /mnt/Data_2/"
 alias y="yazi"
+alias open="xdg-open"
 # alias darkmaster="cd /home/baselash/Work/DarkMasterEcom/"
 
 
@@ -165,16 +164,20 @@ function zen()
 function ccpp ()
 {
   if [ "$#" -ne 1 ]; then
-    echo "Please Enter the app name: create-cpp <name>"
+    echo "Please Enter the app name: ccpp <name>"
     return 0
   fi
-  cp ~/.config/commands/app.cpp .
-  mv ./app.cpp ./"$1".cpp
+  cat ~/.config/commands/app.cpp > ./"$1".cpp
+
+  # mv ./app.cpp ./"$1".cpp
 }
 
 
 # OH-MY-POSH config
 export PATH="$HOME/.local/bin:$PATH"
+
+# Export ttyper 
+export PATH="$HOME/.cargo/bin:$PATH"
 # eval "$(oh-my-posh init zsh)"
 eval "$(oh-my-posh init zsh --config /home/baselash/.config/oh-my-posh/.mytheme.omp.json)"
 # /var/lib/flatpak/exports/bin
