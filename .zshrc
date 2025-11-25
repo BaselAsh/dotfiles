@@ -25,7 +25,7 @@ eval "$(zoxide init zsh)"
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+alias ls='ls --color=no -p'
 alias grep='grep --color=auto'
 # PS1='[\u@\h \W]\$ '
 
@@ -75,7 +75,7 @@ alias home="cd ~"
 alias n="nvim"
 alias myprojects="cd /mnt/d/myproject/"
 alias section="cd /mnt/d/myproject/section/"
-alias format-folder="/usr/bin/clang-format -style=llvm --dump-config > .clang-format"
+alias format-folder="/usr/bin/clang-format -style=LLVM --dump-config > .clang-format"
 alias zconfig="nvim /home/baselash/.zshrc"
 alias zsource="exec zsh"
 # alias minecraft="java -jar /home/baselash/Downloads/TLauncher.v10/TLauncher.jar"
@@ -93,6 +93,10 @@ alias 2disk="cd /mnt/Data_2/"
 alias y="yazi"
 alias open="xdg-open"
 # alias darkmaster="cd /home/baselash/Work/DarkMasterEcom/"
+
+
+# Integrating UV with python
+alias python="uv run python"
 
 
 # Show-off
@@ -125,6 +129,7 @@ function cut-ears ()
 function venv-create ()
 {
   if [ "$#" -ne 1 ]; then
+    python3 -m venv venv
     echo "Created a virtual environment called (venv)"
     return 0
   fi
@@ -138,6 +143,7 @@ function venv-create ()
 function venv-activate ()
 {
   if [ "$#" -ne 1 ]; then
+    source venv/bin/activate
     echo "Activated the virutal environment called (venv)"
     return 0
   fi
