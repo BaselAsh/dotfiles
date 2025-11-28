@@ -13,6 +13,10 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+# Setting neovim as the default text editor
+export EDITOR="kitty nvim"
+export VISUAL="kitty nvim"
+
 # Hooking zoxide to the shell
 eval "$(zoxide init zsh)"
 

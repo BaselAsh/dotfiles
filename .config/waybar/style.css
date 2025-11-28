@@ -1,6 +1,6 @@
 * {
   border: none;
-  border-radius: 20px;
+  border-radius: 5px;
   font-family: "JetBrainsMono Nerd Font";
   font-size: 14px;
   font-weight: bold;
@@ -17,7 +17,7 @@ window#waybar {
   background: #1e1e2e;
   margin: 5px;
   padding: 0 5px;
-  border-radius: 16px;
+  border-radius: 5px;
   color: #89b4fa; /* Blue text */
 }
 
@@ -43,7 +43,7 @@ window#waybar {
   color: #1e1e2e; /* Dark text */
   padding: 0 15px;
   margin: 5px;
-  border-radius: 16px;
+  border-radius: 5px;
 }
 
 #clock,
@@ -67,15 +67,15 @@ window#waybar {
 }
 
 #custom-notification {
-  border-radius: 16px;
+  border-radius: 5px;
   margin-right: 5px;
   padding-right: 5px;
 }
 
 /* Creating a continuous look for the right modules */
 #network {
-  border-top-left-radius: 16px;
-  border-bottom-left-radius: 16px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   color: #89b4fa; /* Blue */
 }
 
@@ -109,7 +109,7 @@ window#waybar {
 #backlight {
   color: #89b4fa;
   padding: 0 10px;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 #battery {
@@ -133,8 +133,8 @@ window#waybar {
 
 #custom-notification {
   padding-right: 15px;
-  border-top-right-radius: 16px;
-  border-bottom-right-radius: 16px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   margin-right: 10px;
   color: #89b4fa;
 }
