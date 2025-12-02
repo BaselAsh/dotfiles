@@ -39,8 +39,10 @@ window#waybar {
 
 #custom-launcher,
 #custom-power {
-  background-color: #89b4fa; /* Blue background */
-  color: #1e1e2e; /* Dark text */
+  background-color: #0056b3;
+  /* background-color: #89b4fa;  Blue background */
+  /* color: #1e1e2e;  Dark text */
+  color: #ffffff; /* Dark text */
   padding: 0 15px;
   margin: 5px;
   border-radius: 5px;

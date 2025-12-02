@@ -20,6 +20,29 @@ export VISUAL="kitty nvim"
 # Hooking zoxide to the shell
 eval "$(zoxide init zsh)"
 
+# Hooking FZF to the shell
+eval "$(fzf --zsh)"
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
+export FZF_TMUX_OPTS=" -p90%,70%"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+
+# Recommended default replacement for ls
+alias ls='eza --color=always --group-directories-first --icons'
+
+# Long list, human-readable, with Git status and directories first
+alias ll='eza -la --git --header --time-style=long-iso --icons'
+
+# Long list, showing only directories as a tree, up to depth 2
+alias ld='eza -lD --level=2 --tree' 
+
+# Lists only files, sorted by size (great for cleaning up)
+alias lS='eza --only-files --sort=size --long --reverse --icons'
 
 
 # if [[ "$TERM" =~ xterm.*|kitty|alacritty ]]; then
@@ -29,7 +52,6 @@ eval "$(zoxide init zsh)"
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=no -p'
 alias grep='grep --color=auto'
 # PS1='[\u@\h \W]\$ '
 

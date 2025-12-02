@@ -5,97 +5,28 @@
       "alignment": "left",
       "segments": [
         {
-          "background": "#a313a8",
-          "foreground": "#FFEB3B",
-          "style": "plain",
-          "template": "\u26a1 ",
-          "type": "root"
-        },
-        {
-          "background": "transparent",
-          "foreground": "#ffffff",
-          "style": "plain",
-          "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
-          "type": "os"
-        },
-        {
-          "background": "#01579B",
-          "foreground": "#ffffff",
-          "leading_diamond": "<transparent,#01579B>\ue0b0</>",
+          "foreground": "#F1FA8C",
           "properties": {
-            "folder_icon": "...",
-            "folder_separator_icon": "<transparent> \ue0bd </>",
-            "home_icon": "\ueb06",
-            "style": "agnoster_short"
+            "style": "folder"
           },
           "style": "diamond",
-          "template": " {{ .Path }} ",
-          "trailing_diamond": "\ue0b0",
+          "template": "<#42E66C>\ueaf7 </><b>{{ .Path }}</b>",
           "type": "path"
         },
         {
-          "background": "#00C853",
-          "background_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FFEB3B{{ end }}",
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FFCC80{{ end }}",
-            "{{ if gt .Ahead 0 }}#B388FF{{ end }}",
-            "{{ if gt .Behind 0 }}#B388FF{{ end }}"
-          ],
-          "foreground": "#000000",
-          "powerline_symbol": "\ue0b0",
+          "foreground": "#43CCEA",
           "properties": {
-            "fetch_status": true
+            "branch_icon": ""
           },
-          "style": "powerline",
-          "template": " {{ .HEAD }}{{ if .Staging.Changed }}<#FF6F00> \uf046 {{ .Staging.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+          "style": "diamond",
+          "template": "<#ffffff> \u26A1 </><b>{{ .HEAD }}</b>",
           "type": "git"
         },
         {
-          "background": "#49404f",
-          "foreground": "#ffffff",
-          "leading_diamond": "<transparent,#49404f>\ue0b0</>",
-          "properties": {
-            "style": "dallas",
-            "threshold": 0
-          },
+          "foreground": "#ff0000",
           "style": "diamond",
-          "template": " {{ .FormattedMs }}s ",
-          "trailing_diamond": "\ue0b0",
-          "type": "executiontime"
-        },
-        {
-          "background": "#910000",
-          "foreground": "#ffffff",
-          "powerline_symbol": "\ue0b0",
-          "style": "powerline",
-          "template": "<transparent> \uf12a</> {{ reason .Code }} ",
-          "type": "status"
-        }
-      ],
-      "type": "prompt"
-    },
-    {
-      "alignment": "right",
-      "segments": [
-        {
-          "background": "#29315A",
-          "foreground": "#43CCEA",
-          "leading_diamond": "\ue0c5",
-          "trailing_diamond": "\ue0bc",
-          "style": "diamond",
-          "template": "  {{ .UserName }}<transparent> / </>{{ .HostName }} ",
-          "type": "session"
-        },
-        {
-          "background": "#29315A",
-          "foreground": "#3EC669",
-          "properties": {
-            "time_format": "15:04:05"
-          },
-          "leading_diamond": "\ue0ba",
-          "style": "diamond",
-          "template": " {{ .CurrentDate | date .Format }} ",
-          "type": "time"
+          "template": "<#ff0000> \u25C9</>",
+          "type": "text"
         }
       ],
       "type": "prompt"
@@ -105,19 +36,15 @@
       "newline": true,
       "segments": [
         {
-          "foreground": "#ffffff",
-          "foreground_templates": ["{{ if gt .Code 0 }}#ff0000{{ end }}"],
-          "properties": {
-            "always_enabled": true
-          },
+          "foreground": "#FFFFFF",
           "style": "plain",
-          "template": "\u276f ",
-          "type": "status"
+          "template": ">",
+          "type": "text"
         }
       ],
       "type": "prompt"
     }
   ],
-  "console_title_template": "{{if .Root}} \u26a1 {{end}}{{.Folder | replace \"~\" \"🏚\" }} @ {{.HostName}}",
+  "final_space": true,
   "version": 3
 }
