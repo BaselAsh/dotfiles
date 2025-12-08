@@ -1,136 +1,150 @@
 {
-    "layer": "top",
-    "position": "top",
-    "output": "LVDS-1", 
-    "mod": "dock",
-    "exclusive": true,
-    "passthrough": false,
-    "gtk-layer-shell": true,
-    "height": 40,
-    "modules-left": ["custom/power", "custom/launcher", "hyprland/workspaces"],
-    "modules-center": ["clock"],
-    "modules-right": [ 
-    "network",
-    "pulseaudio",
+  "layer": "top",
+  "position": "top",
+  "exclusive": true,
+  "output": "LVDS-1", 
+  "margin-bottom": -10,
+  "spacing" : 0,
+  "modules-left": [
+  "hyprland/workspaces",
+  "custom/uptime",
+  "cpu",
+  ],
+
+  "modules-center": ["clock"],
+
+  "modules-right": [
+    "custom/internet-speed",
+    "custom/pomodoro",
     "bluetooth",
+    "network",
+    "pulseaudio", 
     "backlight",
     "battery",
-    "custom/notification",
-    "tray",
-    ],
+  ],
 
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "on-click": "activate",
-        "format": "{icon}",
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": []
-        }
-    },
+  "hyprland/workspaces": {
+    "format": "{name}: {icon}",
+    "all-outputs": true,
+    "format-icons": {
+      "active": "",
+      "default": ""
+    }
+  },
 
-    "custom/launcher": {
-        "format": "",
-        "on-click": "rofi -show drun",
+  "bluetooth": {
+    "format": "󰂲",
+    "format-on": "{icon}",
+    "format-off": "{icon}", 
+    "format-connected":"{icon}",
+    "format-icons":{
+        "on":"󰂯",
+        "off": "󰂲",
+        "connected": "󰂱",
+        },
+    "on-click": "blueman-manager",
+    "tooltip-format-connected":"{device_enumerate}"
+  },
+
+  "custom/music": {
+    "format": "  {}",
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
+    "on-click": "playerctl play-pause",
+    "max-length": 50
+  },
+
+  "clock": {
+    "timezone": "Africa/Cairo",
+    "tooltip": false,
+    "format": "{:%H:%M:%S  -  %A, %d}",
+    "interval": 1
+  },
+
+  "network": {
+    "format-wifi": "󰤢",
+    "format-ethernet": "󰈀 ",
+    "format-disconnected": "󰤠 ",
+    "interval": 5,
+    "tooltip-format": "{essid} ({signalStrength}%)",
+    "on-click": "nm-connection-editor"
+
+ },
+
+  "cpu": {
+    "interval": 1,
+    "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "on-click": "ghostty -e htop"
+  },
+
+  "memory": {
+    "interval": 30,
+    "format": "  {used:0.1f}G/{total:0.1f}G",
+    "tooltip-format": "Memory"
+  },
+
+  "custom/uptime": {
+    "format": "{}",
+    "format-icon": [""], 
+    "tooltip": false,
+    "interval": 1600,
+    "exec": "$HOME/.config/waybar/scripts/uptime.sh"
+  },
+  
+  "backlight": {
+        "format": "{icon}  {percent}%",
+        "format-icons": ["","󰃜", "󰃛", "󰃞","󰃝","󰃟","󰃠"],
         "tooltip": false
+  },
+  
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", " "]
     },
+    "on-click": "pavucontrol"
+  },
 
-    "custom/power": {
-        "format": "⏻",
-        "on-click": "wlogout --protocol layer-shell",
-        "tooltip": false
-    },
-
-    "clock": {
-        "format": "{:%H:%M  |  %a, %b %d}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "today-format": "<b>{}</b>",
-        "on-click": "xdg-open https://calendar.google.com",
-        "on-click-right": "xdg-open https://notion.so"
-    },
-    "bluetooth": {
-        "format": " {status}",
-        "format-disabled": " Off",
-        "format-connected": " {device_alias}",
-        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
-        // "format-device-preference": [ "device1", "device2" ], // Optional: prioritize specific devices
-        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-        "on-click": "blueman-manager"
-    },
-
-    "backlight": {
-        // "device": "intel_backlight", // Un-comment this only if auto-detect fails
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
-        "on-scroll-up": "brightnessctl set 5%+",
-        "on-scroll-down": "brightnessctl set 5%-",
-        "min-length": 6,
-        "tooltip": true,
-        "tooltip-format": "Brightness: {percent}%"
-    },
-
-    "battery": {
+  "battery": {
+        "interval":2,
         "states": {
-            "good": 95,
+            // "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
+        "format": "{icon}  {capacity}%",
+        "format-full": "{icon}  {capacity}%",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
         "format-icons": ["", "", "", "", ""]
-    },
+  },
+  
+  "custom/lock": {
+  "tooltip": false,
+  "on-click": "sh -c '(sleep 0s; hyprlock)' & disown",
+  "format" : ""
+  },
 
-    "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": " Muted",
-    "format-icons": {
-        "default": ["", "", ""]
-    },
-    "on-click": "pavucontrol",
-    "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "scroll-step": 5
-    },
+  "custom/pomodoro": {
+	"format": "{}",
+	"return-type": "json",
+	"exec": "waybar-module-pomodoro --no-work-icons",
+	"on-click": "waybar-module-pomodoro toggle",
+	"on-click-right": "waybar-module-pomodoro reset",
+  },
 
-    "network": {
-        "format-wifi": "  {essid}  {bandwidthDownBytes}  {bandwidthUpBytes}",
-        "format-ethernet": " Connected",
-        "tooltip-format": "{ifname} via {gwaddr}",
-        "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "⚠ Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        // SHOWS DOWNLOAD/UPLOAD SPEED
-        "interval": 2
-    },
-
-    "custom/notification": {
-        "tooltip": false,
-        "format": "{icon}",
-        "format-icons": {
-            "notification": "<span foreground='red'><sup></sup></span>",
-            "none": "",
-            "dnd-notification": "<span foreground='red'><sup></sup></span>",
-            "dnd-none": "",
-            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-            "inhibited-none": "",
-            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-            "dnd-inhibited-none": ""
-        },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "escape": true
-    },
-
-    "tray": {
-        "icon-size": 24,
-        "spacing": 10
-    }
+  "custom/internet-speed": { // <-- New module definition
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/internet_speed.sh",
+    "interval": 2, // Update every 2 seconds for a smoother reading
+    "tooltip": false
+  }
 }
+
