@@ -136,7 +136,13 @@ alias h="hollywood"
 # >>> for termux (phone ssh connection)
 alias ssh-fedora="XDG_SESSION_TYPE=tty ssh baselash@100.124.106.8"
 
+# STOP FIXING MY TYPOS
+unsetopt CORRECT
 
+# This will override any existing command-not-found handler and make it do nothing.
+command_not_found_handler() {
+    return 127
+}
 
 # Connect to the earbuds 
 function ears ()

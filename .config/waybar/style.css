@@ -3,7 +3,7 @@
   font-family:
     "JetBrainsMono Nerd Font Propo", "SF Pro Text", "Inter",
     "Segoe UI, NotoSans Nerd Font", sans-serif;
-  font-size: 13px;
+  font-size: 10px;
   min-height: 0;
   padding-right: 0px;
   padding-left: 0px;
@@ -24,7 +24,7 @@
 #cpu,
 #custom-internet-speed {
   background-color: #1a1b26;
-  padding: 0.3rem 0.7rem;
+  padding: 0.2rem 0.5rem;
   margin: 5px 0px; /* 5px top/bottom margin, 0px left/right (base for individual control) */
   border-radius: 6px; /* These modules are always rounded */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
