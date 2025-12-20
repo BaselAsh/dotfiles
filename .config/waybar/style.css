@@ -20,8 +20,8 @@
 
 /* --- Left Modules (Individual, Fully Rounded Blocks - With Horizontal Spacing & Simple Hover) --- */
 #workspaces,
-#custom-uptime,
 #cpu,
+#memory,
 #custom-internet-speed {
   background-color: #1a1b26;
   padding: 0.2rem 0.5rem;
@@ -42,13 +42,11 @@
   margin-right: 5px; /* Spacing after the workspaces module */
 }
 
-#custom-uptime {
-  margin-right: 5px; /* Spacing after the uptime module */
-}
-
 /* Simple Hover effects for individual left modules - BRIGHTER COLOR */
-#custom-uptime:hover,
 #cpu:hover {
+  background-color: rgb(41, 42, 53); /* Brighter highlight */
+}
+#memory:hover {
   background-color: rgb(41, 42, 53); /* Brighter highlight */
 }
 
@@ -146,9 +144,11 @@
 /* --- Right Modules (Single, Seamless Bar ) --- */
 #bluetooth,
 #pulseaudio,
+#pulseaudio.microphone,
 #backlight,
 #network,
 #custom-lock,
+#custom-internet-speed,
 #battery {
   background-color: #1a1b26;
   padding: 0.3rem 0.7rem;
@@ -164,9 +164,11 @@
 
 #bluetooth:hover,
 #pulseaudio:hover,
+#pulseaudio.microphone:hover,
 #backlight:hover,
 #network:hover,
 #custom-lock:hover,
+#custom-internet-speed:hover,
 #battery:hover {
   background-color: rgb(41, 42, 53);
 }
@@ -183,10 +185,11 @@
   margin-right: 7px;
 }
 
-#custom-uptime {
-  color: #babbf1;
-}
 #cpu {
+  color: #c6d0f5;
+}
+
+#memory {
   color: #c6d0f5;
 }
 
@@ -195,8 +198,17 @@
   font-weight: 500;
 }
 
-#pulseaudio {
+#pulseaudio,
+#pulseaudio.microphone {
   color: #c6d0f5;
+}
+#pulseaudio.muted {
+  color: #ff0000;
+  background-color: #ffac1c;
+}
+#pulseaudio.microphone.source-muted {
+  color: #ff0000;
+  background-color: #ffac1c;
 }
 #backlight {
   color: #c6d0f5;
@@ -243,4 +255,38 @@ tooltip {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   font-size: 12px;
+}
+/* Reset for the specific bar */
+window#waybar.static-info-bar {
+  background-color: #000000; /* Pure black */
+  background: #000000;
+  color: #ffffff;
+  font-size: 12px;
+}
+#static-info-bar.empty {
+  background-color: #000000;
+  background: #000000;
+}
+
+#static-info-bar .modules-left,
+#static-info-bar .modules-center,
+#static-info-bar .modules-right {
+  background: #000000;
+}
+
+/* Styling the custom modules within that bar */
+#static-info-bar window#waybar.empty #window {
+  background-color: transparent;
+}
+
+#custom-hostname,
+#custom-kernel,
+#custom-ip,
+#custom-mac,
+#custom-uptime {
+  padding: 0 10px;
+  margin: 4px 2px;
+  /* background-color: #1a1a1a; */
+  /* border-radius: 4px; */
+  /* border: 1px solid #333333; */
 }

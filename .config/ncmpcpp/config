@@ -23,9 +23,9 @@
 #
 ##### connection settings #####
 #
-#mpd_host = localhost
+mpd_host = "127.0.0.1"
 #
-#mpd_port = 6600
+mpd_port = "6600"
 #
 #mpd_password = ""
 #
@@ -33,7 +33,7 @@
 #
 ## Needed for tag editor and file operations to work.
 ##
-mpd_music_dir = /mnt/Data_1/Pasel2025/Relax
+mpd_music_dir = /home/baselash/1_Disk/Pasel2025/Relax/
 #
 #mpd_crossfade_time = 5
 #

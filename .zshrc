@@ -9,9 +9,20 @@ bindkey -v
 zstyle :compinstall filename '/home/baselash/.zshrc'
 # export FUNCNEST=500
 
+# Auto-start Hyprland on TTY1
+if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
+	exec Hyprland
+fi
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+
+# Path for npm and html/css language servers
+export PATH="$PATH:/usr/bin"
+
+
 
 # Setting neovim as the default text editor
 export EDITOR="kitty nvim"
@@ -137,12 +148,10 @@ alias h="hollywood"
 alias ssh-fedora="XDG_SESSION_TYPE=tty ssh baselash@100.124.106.8"
 
 # STOP FIXING MY TYPOS
-unsetopt CORRECT
-
 # This will override any existing command-not-found handler and make it do nothing.
-command_not_found_handler() {
-    return 127
-}
+# command_not_found_handler() {
+#     return 127
+# }
 
 # Connect to the earbuds 
 function ears ()
@@ -187,15 +196,14 @@ function venv-activate ()
 function runserver ()
 {
   if [ "$#" -ne 1 ]; then
-    python manage.py runserver
+    uv run manage.py runserver
     return 0
   fi
-  python manage.py runserver $1
+  uv run manage.py runserver $1
 }
 
 function zen()
 {
-  venv-activate /home/baselash/Work/zen/venv
   cd /home/baselash/Work/zen
 }
 

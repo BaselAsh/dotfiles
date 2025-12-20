@@ -1,150 +1,262 @@
-{
-  "layer": "top",
-  "position": "top",
-  "exclusive": true,
-  "output": "LVDS-1", 
-  "margin-bottom": -10,
-  "spacing" : 0,
-  "modules-left": [
-  "hyprland/workspaces",
-  "custom/uptime",
-  "cpu",
-  ],
+[
+    {
+      "name": "primary",
+      "layer": "top",
+      "position": "top",
+      "exclusive": true,
+      "output": "LVDS-1", 
+      "margin-bottom": -10,
+      "spacing" : 0,
+      "modules-left": [
+      "hyprland/workspaces",
+      ],
+      // "custom/uptime"
 
-  "modules-center": ["clock"],
+      "modules-center": ["clock"],
 
-  "modules-right": [
-    "custom/internet-speed",
-    "custom/pomodoro",
-    "bluetooth",
-    "network",
-    "pulseaudio", 
-    "backlight",
-    "battery",
-  ],
+      "modules-right": [
+        "custom/pomodoro",
+        "bluetooth",
+        "network",
+        "pulseaudio", 
+        "pulseaudio#microphone",
+        "backlight",
+        "battery",
+      ],
 
-  "hyprland/workspaces": {
-    "format": "{name}: {icon}",
-    "all-outputs": true,
-    "format-icons": {
-      "active": "",
-      "default": ""
-    }
-  },
+      "hyprland/workspaces": {
+        "format": "{name}: {icon}",
+        "all-outputs": true,
+        "format-icons": {
+            // CODE: Blue (Hex #61afef) - Represents logic/structure
+            "1": "<span color='#61afef'><b>CODE</b></span>", 
+            
+            // SYS: Green (Hex #98c379) - Represents terminal/server status
+            "2": "<span color='#98c379'><b>SYS</b></span>", 
 
-  "bluetooth": {
-    "format": "󰂲",
-    "format-on": "{icon}",
-    "format-off": "{icon}", 
-    "format-connected":"{icon}",
-    "format-icons":{
-        "on":"󰂯",
-        "off": "󰂲",
-        "connected": "󰂱",
+            // WEB: Orange (Hex #e5c07b) - Represents browser/web
+            "3": "<span color='#e5c07b'><b>WEB</b></span>", 
+            
+            // CHAT: Purple (Hex #c678dd) - Represents social/media
+            "4": "<span color='#c678dd'><b>CHAT</b></span>",
+            // The rest of the workspaces
+            "5": "<span color='#ffffff'><b></b></span>",
+            "6": "<span color='#ffffff'><b></b></span>",
+            "7": "<span color='#ffffff'><b></b></span>",
+            "8": "<span color='#ffffff'><b></b></span>",
+            "9": "<span color='#ffffff'><b></b></span>",
+            "10": "<span color='#dd3333'><b>MUSIC</b></span>",
         },
-    "on-click": "blueman-manager",
-    "tooltip-format-connected":"{device_enumerate}"
-  },
+        "persistent-workspaces": {
+            "*": 4
+        }
+      },
 
-  "custom/music": {
-    "format": "  {}",
-    "escape": true,
-    "interval": 5,
-    "tooltip": false,
-    "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
-    "on-click": "playerctl play-pause",
-    "max-length": 50
-  },
+      "bluetooth": {
+        "format": "󰂲",
+        "format-on": "{icon}",
+        "format-off": "{icon}", 
+        "format-connected":"{icon}",
+        "format-icons":{
+            "on":"󰂯",
+            "off": "󰂲",
+            "connected": "󰂱",
+            },
+        "on-click": "blueman-manager",
+        "tooltip-format-connected":"{device_enumerate}"
+      },
 
-  "clock": {
-    "timezone": "Africa/Cairo",
-    "tooltip": false,
-    "format": "{:%H:%M:%S  -  %A, %d}",
-    "interval": 1
-  },
 
-  "network": {
-    "format-wifi": "󰤢",
-    "format-ethernet": "󰈀 ",
-    "format-disconnected": "󰤠 ",
-    "interval": 5,
-    "tooltip-format": "{essid} ({signalStrength}%)",
-    "on-click": "nmtui"
+      "clock": {
+        "timezone": "Africa/Cairo",
+        "tooltip": false,
+        "format": "{:%H:%M:%S  -  %A, %d}",
+        "interval": 1
+      },
 
- },
 
-  "cpu": {
-    "interval": 1,
-    "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
-    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
-    "on-click": "ghostty -e htop"
-  },
 
-  "memory": {
-    "interval": 30,
-    "format": "  {used:0.1f}G/{total:0.1f}G",
-    "tooltip-format": "Memory"
-  },
+      //"custom/uptime": {
+      //  "format": "{}",
+      //  "format-icon": [""], 
+      //  "tooltip": false,
+      //  "interval": 1600,
+      //  "exec": "$HOME/.config/waybar/scripts/uptime.sh"
+      //},
+      
+      "backlight": {
+            "format": "{icon}  {percent}%",
+            "format-icons": ["","󰃜", "󰃛", "󰃞","󰃝","󰃟","󰃠"],
+            "tooltip": false
+      },
+      
+      "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "",
+        "format-icons": {
+          "default": ["", "", " "]
+        },
+        "on-click": "pavucontrol",
+        // "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+      },
 
-  "custom/uptime": {
-    "format": "{}",
-    "format-icon": [""], 
-    "tooltip": false,
-    "interval": 1600,
-    "exec": "$HOME/.config/waybar/scripts/uptime.sh"
-  },
-  
-  "backlight": {
-        "format": "{icon}  {percent}%",
-        "format-icons": ["","󰃜", "󰃛", "󰃞","󰃝","󰃟","󰃠"],
-        "tooltip": false
-  },
-  
-  "pulseaudio": {
-    "format": "{icon}  {volume}%",
-    "format-muted": "",
-    "format-icons": {
-      "default": ["", "", " "]
+        "pulseaudio#microphone": {
+            // Defines the icon when the mic is UNMUTED
+            "format-source": "", // FontAwesome mic icon
+
+            // Defines the icon when the mic is MUTED
+            "format-source-muted": "", // FontAwesome mic-slash icon
+
+            // Tells the module to use the formats defined above
+            "format": "{format_source}",
+
+            // Command to execute when the icon is clicked
+            "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+            "on-click-right": "pavucontrol",
+
+            // Command to execute on scroll (optional: for mic gain control)
+            "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
+            "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%",
+
+            "tooltip": true, // Show a tooltip on hover
+            "scroll-step": 1,
+            "max-volume": 150
+        },
+      "network": {
+        "format-wifi": "󰤢",
+        "format-ethernet": "󰈀 ",
+        "format-disconnected": "󰤠 ",
+        "interval": 5,
+        "tooltip-format": "{essid} ({signalStrength}%)",
+        "on-click": "nmtui"
+
+     },
+
+      "battery": {
+            "interval":2,
+            "states": {
+                // "good": 95,
+                "warning": 30,
+                "critical": 15
+            },
+            "format": "{icon}  {capacity}%",
+            "format-full": "{icon}  {capacity}%",
+            "format-charging": " {capacity}%",
+            "format-plugged": " {capacity}%",
+            "format-alt": "{icon} {time}",
+            // "format-good": "", // An empty format will hide the module
+            // "format-full": "",
+            "format-icons": ["", "", "", "", ""]
+      },
+      
+      "custom/lock": {
+      "tooltip": false,
+      "on-click": "sh -c '(sleep 0s; hyprlock)' & disown",
+      "format" : ""
+      },
+
+      "custom/pomodoro": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "waybar-module-pomodoro --no-work-icons",
+        "on-click": "waybar-module-pomodoro toggle",
+        "on-click-right": "waybar-module-pomodoro reset",
+      },
+
     },
-    "on-click": "pavucontrol"
-  },
+    {
+      "name": "secondary",
+      "layer": "top",
+      "position": "top",
+      "exclusive": true,
+      "output": "VGA-1", 
+      "margin-bottom": -10,
+      "spacing" : 0,
+      "modules-left":[
+          "custom/music",
+      ],
+      "modules-center": [],
+      "modules-right": [
+          "cpu",
+          "memory",
+          "custom/internet-speed",
+      ],
 
-  "battery": {
-        "interval":2,
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
+      "cpu": {
+        "interval": 1,
+        "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+        "on-click": "kitty -e htop"
+      },
+
+      "memory": {
+        "interval": 30,
+        "format": "  {used:0.1f}G/{total:0.1f}G",
+        "tooltip-format": "Memory",
+        "on-click": "kitty -e htop"
+      },
+     "custom/music": {
+        "format": "  {}",
+        "escape": true,
+        "interval": 5,
+        "tooltip": false,
+        "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
+        "on-click": "playerctl play-pause",
+        "max-length": 100
+      },
+
+      "custom/internet-speed": { // <-- New module definition
+        "format": "{}",
+        "exec": "~/.config/waybar/scripts/internet_speed.sh",
+        "interval": 2, // Update every 2 seconds for a smoother reading
+        "tooltip": false,
+        "on-click": "kitty -e htop"
+      },
+    },
+    // ... your existing main bar config would be here (inside the array) ... ,
+
+    // START OF NEW BOTTOM BAR
+    {
+        "name": "static-info-bar",
+        "layer": "top",
+        "exclusive": true,
+        "position": "bottom",
+        "height": 24, 
+        "output": "VGA-1", // Strictly targets your VGA screen
+        "modules-left": ["custom/hostname", "custom/kernel"],
+        "modules-center": ["custom/ip", "custom/mac"],
+        "modules-right": ["custom/uptime"],
+
+        // --- MODULE DEFINITIONS ---
+
+        "custom/hostname": {
+            "format": "  {}",
+            "exec": "whoami",
+            "interval": "once"
         },
-        "format": "{icon}  {capacity}%",
-        "format-full": "{icon}  {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{icon} {time}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-  },
-  
-  "custom/lock": {
-  "tooltip": false,
-  "on-click": "sh -c '(sleep 0s; hyprlock)' & disown",
-  "format" : ""
-  },
+        "custom/kernel": {
+            "format": "  {}",
+            "exec": "uname -r",
+            "interval": "once"
+        },
+        "custom/ip": {
+            "format": "  {}",
+            // Replaces standard network module for a purely static text look
+            // CHANGE 'wlan0' to your actual interface name (check with `ip a`)
+            "exec": "ip -4 addr show wlp2s0 | grep -oP '(?<=inet\\s)\\d+(\\.\\d+){3}' || echo 'No IP'",
+            "interval": 60
+        },
+        "custom/mac": {
+            "format": "  {}",
+            // CHANGE 'wlan0' to your actual interface name
+            "exec": "cat /sys/class/net/wlp2s0/address",
+            "interval": "once"
+        },
+        "custom/uptime": {
+            "format": "  Up: {}",
+            "exec": "uptime -p | sed 's/up //'",
+            "interval": 60
+        }
+    }
 
-  "custom/pomodoro": {
-	"format": "{}",
-	"return-type": "json",
-	"exec": "waybar-module-pomodoro --no-work-icons",
-	"on-click": "waybar-module-pomodoro toggle",
-	"on-click-right": "waybar-module-pomodoro reset",
-  },
-
-  "custom/internet-speed": { // <-- New module definition
-    "format": "{}",
-    "exec": "~/.config/waybar/scripts/internet_speed.sh",
-    "interval": 2, // Update every 2 seconds for a smoother reading
-    "tooltip": false
-  }
-}
-
+]
