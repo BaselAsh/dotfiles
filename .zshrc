@@ -1,6 +1,6 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
+HISTSIZE=2000
 SAVEHIST=10000
 unsetopt beep notify
 bindkey -v
@@ -21,6 +21,9 @@ compinit
 
 # Path for npm and html/css language servers
 export PATH="$PATH:/usr/bin"
+
+# To make sure the nvim configuration doesn't conflict with anything else
+export PATH="$HOME/.npm-global/bin:$PATH"
 
 
 

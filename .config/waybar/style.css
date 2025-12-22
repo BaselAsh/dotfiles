@@ -1,13 +1,15 @@
 /* --- Global Styles --- */
 * {
   font-family:
-    "JetBrainsMono Nerd Font Propo", "SF Pro Text", "Inter",
+    "JetBrainsMono Nerd Font Propo", "MonaspiceNe Nerd Font Propo",
+    "Font Awesome 6 Free", "SF Pro Text", "Inter",
     "Segoe UI, NotoSans Nerd Font", sans-serif;
   font-size: 10px;
   min-height: 0;
   padding-right: 0px;
   padding-left: 0px;
   padding-bottom: 0px;
+  margin-bottom: 2px;
 }
 
 /* --- Waybar Container --- */
