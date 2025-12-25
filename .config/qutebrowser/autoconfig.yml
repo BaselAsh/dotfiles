@@ -9,6 +9,7 @@ settings:
   content.desktop_capture:
     https://discord.com: true
   content.javascript.clipboard:
+    https://discord.com: access-paste
     https://gemini.google.com: access-paste
   content.media.audio_capture:
     https://discord.com: true

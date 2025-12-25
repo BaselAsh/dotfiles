@@ -39,3 +39,9 @@ keymap.set("n", "<A-k>", "<cmd>m .-2<CR>", { desc = "Move line up" })
 keymap.set("n", "<A-j>", "<cmd>m .1<CR>", { desc = "Move line down" })
 keymap.set("i", "<A-k>", "<cmd>m .-2<CR>", { desc = "Move line up" })
 keymap.set("i", "<A-j>", "<cmd>m .1<CR>", { desc = "Move line down" })
+
+-- for markdown files
+keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Markdown Preview" })
+
+-- launching live-server
+keymap.set("n", "<leader>ls", "<cmd>TermExec cmd='live-server'<cr>", { desc = "Run Live Server" })
