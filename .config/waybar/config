@@ -28,26 +28,37 @@
         "all-outputs": true,
         "format-icons": {
             // CODE: Blue (Hex #61afef) - Represents logic/structure
-            "1": "<span color='#61afef'><b>CODE</b></span>", 
+            // "1": "<span color='#61afef'><b>CODE</b></span>", 
             
             // SYS: Green (Hex #98c379) - Represents terminal/server status
-            "2": "<span color='#98c379'><b>SYS</b></span>", 
+            // "2": "<span color='#98c379'><b>SYS</b></span>", 
 
             // WEB: Orange (Hex #e5c07b) - Represents browser/web
-            "3": "<span color='#e5c07b'><b>WEB</b></span>", 
+            // "3": "<span color='#e5c07b'><b>WEB</b></span>", 
             
             // CHAT: Purple (Hex #c678dd) - Represents social/media
-            "4": "<span color='#c678dd'><b>CHAT</b></span>",
+            // "4": "<span color='#c678dd'><b>CHAT</b></span>",
             // The rest of the workspaces
-            "5": "<span color='#ffffff'><b></b></span>",
-            "6": "<span color='#ffffff'><b></b></span>",
-            "7": "<span color='#ffffff'><b></b></span>",
-            "8": "<span color='#ffffff'><b></b></span>",
-            "9": "<span color='#ffffff'><b></b></span>",
-            "10": "<span color='#dd3333'><b>MUSIC</b></span>",
+            // "5": "<span color='#ffffff'><b>Youtube</b></span>",
+            // "6": "<span color='#ffffff'><b></b></span>",
+            // "7": "<span color='#ffffff'><b></b></span>",
+            // "8": "<span color='#ffffff'><b></b></span>",
+            // "9": "<span color='#ffffff'><b></b></span>",
+            // "10": "<span color='#dd3333'><b>MUSIC</b></span>",
+
+            "1": "󰣇 ",
+            "2": " ",
+            "3": "󰖟 ",
+            "4": " ",
+            "5": " ",
+            "6": " ",
+            "7": "󱅝 ",
+            "8": " ",
+            "9": " ",
+            "10": " "
         },
         "persistent-workspaces": {
-            "*": 4
+            "*": 10
         }
       },
 
@@ -157,7 +168,7 @@
       "custom/pomodoro": {
         "format": "{}",
         "return-type": "json",
-        "exec": "waybar-module-pomodoro --no-work-icons",
+        "exec": "sleep 1 && waybar-module-pomodoro --no-work-icons",
         "on-click": "waybar-module-pomodoro toggle",
         "on-click-right": "waybar-module-pomodoro reset",
       },
@@ -182,7 +193,18 @@
           "custom/internet-speed",
           "memory",
           "cpu",
+          "temperature",
       ],
+
+
+      "temperature": {
+        "thermal-zone": 2,
+        "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+        "input-filename": "temp1_input",
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C ",
+        "format": "{temperatureC}°C "
+      },
 
       "cpu": {
         "interval": 1,

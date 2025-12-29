@@ -15,19 +15,17 @@ opt.autoindent = true
 
 local indent_group = vim.api.nvim_create_augroup("FileTypeIndentSettings", { clear = true })
 
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "html", "css", "djangohtml", "javascript", "typescript", "json", "dart", "ruby" },
-    group = indent_group,
-    callback = function()
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.tabstop = 2
-        vim.opt_local.softtabstop = 2
-        vim.opt_local.expandtab = true
-        vim.opt_local.autoindent = true
-    end
-})
-
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = { "html", "css", "djangohtml", "javascript", "typescript", "json", "dart", "ruby" },
+--     group = indent_group,
+--     callback = function()
+--         vim.opt_local.shiftwidth = 2
+--         vim.opt_local.tabstop = 2
+--         vim.opt_local.softtabstop = 2
+--         vim.opt_local.expandtab = true
+--         vim.opt_local.autoindent = true
+--     end
+-- })
 
 opt.wrap = false
 

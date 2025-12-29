@@ -432,3 +432,4 @@
 2025-12-24T08:27:08 player: played "Audio/Relaxing Nature Sounds for Sleeping - Natural Calm Forest Waterfall Music Meditation Sound for Study(MP3_70K).mp3"
 2025-12-24T08:27:08 exception: Failed to decode "/home/baselash/1_Disk/Pasel2025/Relax/Audio/Best of lofi hip hop 2021 ✨ - beats to relax_study to(MP3_160K).mp3"; Failed to open "/home/baselash/1_Disk/Pasel2025/Relax/Audio/Best of lofi hip hop 2021 ✨ - beats to relax_study to(MP3_160K).mp3": No such file or directory
 2025-12-24T08:27:08 player: played "Audio/Best of lofi hip hop 2021 ✨ - beats to relax_study to(MP3_160K).mp3"
+2025-12-29T19:50:35 exception: Failed to open /home/baselash/1_Disk/Pasel2025/Relax/playlists: No such file or directory

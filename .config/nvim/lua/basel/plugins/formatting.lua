@@ -22,6 +22,11 @@ return {
                     css = { "prettier" },
                     json = { "prettier" },
                 },
+                formatters = {
+                    prettier = {
+                        prepend_args = { "--single-quote", "true" },
+                    },
+                },
             })
         end,
     },

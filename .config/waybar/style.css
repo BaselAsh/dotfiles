@@ -1,9 +1,9 @@
 /* --- Global Styles --- */
 * {
   font-family:
-    "JetBrainsMono Nerd Font Propo", "MonaspiceNe Nerd Font Propo",
-    "Font Awesome 6 Free", "SF Pro Text", "Inter",
-    "Segoe UI, NotoSans Nerd Font", sans-serif;
+    'JetBrainsMono Nerd Font Propo', 'MonaspiceNe Nerd Font Propo',
+    'Font Awesome 6 Free', 'SF Pro Text', 'Inter',
+    'Segoe UI, NotoSans Nerd Font', sans-serif;
   font-size: 10px;
   min-height: 0;
   padding-right: 0px;
@@ -21,6 +21,7 @@
 }
 
 /* --- Left Modules (Individual, Fully Rounded Blocks - With Horizontal Spacing & Simple Hover) --- */
+#temperature,
 #workspaces,
 #cpu,
 #custom-ssd,
@@ -47,10 +48,42 @@
   border-radius: 6px;
 }
 
+#workspaces button:nth-child(1) {
+  color: #89b4fa;
+} /* Blue - TERM */
+#workspaces button:nth-child(2) {
+  color: #fab387;
+} /* Peach - CODE */
+#workspaces button:nth-child(3) {
+  color: #a6e3a1;
+} /* Green - WEB */
+#workspaces button:nth-child(4) {
+  color: #f9e2af;
+} /* Yellow - DEV */
+#workspaces button:nth-child(5) {
+  color: #94e2d5;
+} /* Teal - DB */
+#workspaces button:nth-child(6) {
+  color: #eba0ac;
+} /* Maroon - GIT */
+#workspaces button:nth-child(7) {
+  color: #cba6f7;
+} /* Mauve - CHAT */
+#workspaces button:nth-child(8) {
+  color: #f38ba8;
+} /* Red - GYM */
+#workspaces button:nth-child(9) {
+  color: #89dceb;
+} /* Sky - SYS */
+#workspaces button:nth-child(10) {
+  color: #f5c2e7;
+} /* Pink - MUS */
+
 /* Simple Hover effects for individual left modules - BRIGHTER COLOR */
 #cpu:hover {
   background-color: rgb(41, 42, 53); /* Brighter highlight */
 }
+
 #memory:hover {
   background-color: rgb(41, 42, 53); /* Brighter highlight */
 }
@@ -65,10 +98,15 @@
   outline: none;
 }
 
-#workspaces button.active {
+#workspaces button.active,
+#workspaces button.focused {
   color: #89b4fa;
   background-color: rgba(153, 209, 219, 0.1);
   box-shadow: inset 0 0 0 1px rgba(153, 209, 219, 0.2);
+}
+
+#workspaces button.visible {
+  font-weight: bold;
 }
 
 #workspaces button:hover {
@@ -176,6 +214,7 @@
 #backlight:hover,
 #network:hover,
 #custom-lock:hover,
+#temperature:hover,
 #custom-internet-speed:hover,
 #battery:hover {
   background-color: rgb(41, 42, 53);
@@ -195,8 +234,14 @@
 
 #cpu {
   color: #c6d0f5;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
+}
+
+#temperature {
+  background-color: #1a1b26;
+  color: #c6d0f5;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-right: 7px;
 }
 
 #memory {
@@ -256,9 +301,8 @@
 }
 
 #custom-internet-speed {
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
-  margin-right: 3px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
 }
 
 /* --- Tooltip Styles --- */
