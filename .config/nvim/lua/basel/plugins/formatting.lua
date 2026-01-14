@@ -1,16 +1,18 @@
 return {
-    -- 🔧 Formatting
+    -- Formatting
     {
         "stevearc/conform.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("conform").setup({
-                format_on_save = {
-                    timeout_ms = 5000,
-                    lsp_fallback = true,
-                },
+                format_on_save = function(bufnr)
+                    if vim.g.disable_autoformat then
+                        return
+                    end
+                    return { timeout_ms = 5000, lsp_fallback = true, quiet = true }
+                end,
                 formatters_by_ft = {
-                    python = { "black", "ruff_fix", "ruff_format" },
+                    python = { "ruff_format", "ruff_fix", "black" },
                     lua = { "stylua" },
                     c = { "clang_format" },
                     cpp = { "clang_format" },
@@ -26,12 +28,21 @@ return {
                     prettier = {
                         prepend_args = { "--single-quote", "true" },
                     },
+                    black = {
+                        prepend_args = { "--fast" },
+                    },
                 },
+            })
+            vim.api.nvim_create_user_command("FormatToggle", function()
+                vim.g.disable_autoformat = not vim.g.disable_autoformat
+                print("Autoformat-on-save: " .. (vim.g.disable_autoformat and "Disabled" or "Enabled"))
+            end, {
+                desc = "Toggle autoformat-on-save",
             })
         end,
     },
 
-    -- 🧹 Linting
+    -- Linting
     {
         "mfussenegger/nvim-lint",
         event = { "BufReadPre", "BufNewFile" },

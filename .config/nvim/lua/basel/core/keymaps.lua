@@ -45,3 +45,6 @@ keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Markdo
 
 -- launching live-server
 keymap.set("n", "<leader>ls", "<cmd>TermExec cmd='live-server'<cr>", { desc = "Run Live Server" })
+
+-- Toggle autoformatting
+vim.keymap.set("n", "<leader>Ft", "<cmd>FormatToggle<CR>", { desc = "Toggle Format on Save" })

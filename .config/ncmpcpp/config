@@ -33,7 +33,7 @@ mpd_port = "6600"
 #
 ## Needed for tag editor and file operations to work.
 ##
-mpd_music_dir = /home/baselash/1_Disk/Pasel2025/Relax/
+mpd_music_dir = /home/baselash/Workspace/Pasel2025/Relax/
 #
 #mpd_crossfade_time = 5
 #

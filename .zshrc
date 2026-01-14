@@ -11,7 +11,7 @@ zstyle :compinstall filename '/home/baselash/.zshrc'
 
 # Auto-start Hyprland on TTY1
 if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
-	exec Hyprland
+	exec start-hyprland
 fi
 
 autoload -Uz compinit
