@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Get the current state of blur (robust check for the integer value)
+HYPR_STATE=$(hyprctl getoption decoration:blur:enabled | awk 'NR==1{print $2}')
+
+
+if [ "$HYPR_STATE" = "1" ]; then
+    # --- Performance Mode: Turn everything OFF ---
+    hyprctl keyword decoration:blur:enabled 0
+    hyprctl keyword decoration:shadow:enabled 0
+    hyprctl keyword decoration:rounding 0
+    hyprctl keyword animations:enabled 0
+    # Also reset opacities to 1.0 to save iGPU cycles
+    hyprctl keyword decoration:active_opacity 1.0
+    hyprctl keyword decoration:inactive_opacity 1.0
+    
+    notify-send "Performance Mode" "GPU effects disabled for coding." -i utilities-terminal
+else
+    # --- Aesthetic Mode: Turn everything ON ---
+    hyprctl keyword decoration:blur:enabled 1
+    hyprctl keyword decoration:shadow:enabled 1
+    hyprctl keyword decoration:rounding 10
+    hyprctl keyword animations:enabled 1
+    # Set your preferred opacities for "Aesthetic" mode
+    hyprctl keyword decoration:active_opacity 1.0
+    hyprctl keyword decoration:inactive_opacity 0.8
+    
+    notify-send "Aesthetic Mode" "Visual effects enabled." -i Preferences-desktop-wallpaper
+fi
