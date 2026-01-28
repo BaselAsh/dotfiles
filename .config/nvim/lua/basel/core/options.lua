@@ -13,7 +13,7 @@ opt.softtabstop = 4
 opt.expandtab = true
 opt.autoindent = true
 
-local indent_group = vim.api.nvim_create_augroup("FileTypeIndentSettings", { clear = true })
+-- local indent_group = vim.api.nvim_create_augroup("FileTypeIndentSettings", { clear = true })
 
 -- vim.api.nvim_create_autocmd("FileType", {
 --     pattern = { "html", "css", "djangohtml", "javascript", "typescript", "json", "dart", "ruby" },
@@ -26,6 +26,35 @@ local indent_group = vim.api.nvim_create_augroup("FileTypeIndentSettings", { cle
 --         vim.opt_local.autoindent = true
 --     end
 -- })
+--
+
+-- Create a group so the autocmds don't duplicate on reload
+local indent_group = vim.api.nvim_create_augroup("IndentSettings", { clear = true })
+
+-- Helper function to set indentation
+local function set_indent(size)
+    vim.opt_local.tabstop = size
+    vim.opt_local.shiftwidth = size
+    vim.opt_local.expandtab = true
+end
+
+-- 2-space indentation for Web Development (PERN Stack)
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact", "css", "html" },
+    group = indent_group,
+    callback = function()
+        set_indent(2)
+    end,
+})
+
+-- 4-space indentation for Python and C++
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "python", "cpp", "c" },
+    group = indent_group,
+    callback = function()
+        set_indent(4)
+    end,
+})
 
 opt.wrap = false
 
