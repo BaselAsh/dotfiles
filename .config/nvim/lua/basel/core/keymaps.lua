@@ -46,3 +46,6 @@ keymap.set("n", "<leader>ls", "<cmd>TermExec cmd='live-server'<cr>", { desc = "R
 
 -- Toggle autoformatting
 vim.keymap.set("n", "<leader>Ft", "<cmd>FormatToggle<CR>", { desc = "Toggle Format on Save" })
+
+-- Toggle undotree with <leader>u
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undo Tree" })

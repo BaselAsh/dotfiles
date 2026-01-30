@@ -367,3 +367,12 @@ window#waybar.static-info-bar {
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
 }
+
+#custom-todo {
+  background-color: #1a1b26;
+  padding: 2px 10px;
+  margin: 2px 0px;
+  border-radius: 6px; /* This module is always rounded */
+  min-width: 50px;
+  border: none;
+}

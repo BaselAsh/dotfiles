@@ -188,7 +188,9 @@
           "custom/hdd2",
       ],
           // "custom/music",
-      "modules-center": [],
+      "modules-center": [
+        "custom/todo",
+      ],
       "modules-right": [
           "custom/internet-speed",
           "memory",
@@ -196,6 +198,15 @@
           "temperature",
       ],
 
+        "custom/todo": {
+            "format": "{}",
+            "interval": 10,
+            "exec": "bash $HOME/.config/waybar/scripts/todo.sh",
+            "on-click": "kitty nvim ~/Workspace/Journal/todo.txt",
+            "on-click-middle": "bash $HOME/.config/waybar/scripts/todo_done.sh",
+            "max-length": 40,
+            "signal": 1
+        },
 
       "temperature": {
         "thermal-zone": 2,
@@ -238,20 +249,20 @@
         "on-click": "kitty -e btop"
       },
     "custom/ssd": {
-        "format": "󰋊 SSD: {}",
+        "format": "󰋊 S: {}",
         "interval": 60,
         "exec": "df -h / | awk 'NR==2 {print $3 \"/\" $2}'",
         "tooltip": false
     },
 
     "custom/hdd1": {
-        "format": "󰋊 Workspace: {}",
+        "format": "󰋊 W: {}",
         "interval": 300,
         "exec": "df -h /home/baselash/Workspace/ | awk 'NR==2 {print $3 \"/\" $2}'",
         "tooltip": false
     },
     "custom/hdd2": {
-        "format": "󰋊 Storage: {}",
+        "format": "󰋊 S: {}",
         "interval": 300,
         "exec": "df -h /home/baselash/Storage/ | awk 'NR==2 {print $3 \"/\" $2}'",
         "tooltip": false

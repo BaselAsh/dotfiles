@@ -83,3 +83,15 @@ opt.scrolloff = 10
 
 -- Remove ~ remove end of file buffer
 opt.fillchars = { eob = " " }
+
+-- Save undo_history
+-- Enable persistent undo
+local undodir = vim.fn.expand("~/.local/share/nvim/undo")
+
+-- Create the directory if it doesn't exist
+if vim.fn.isdirectory(undodir) == 0 then
+    vim.fn.mkdir(undodir, "p", 0700)
+end
+
+vim.opt.undodir = undodir
+vim.opt.undofile = true
