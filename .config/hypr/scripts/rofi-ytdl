@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# 1. Get URL from Rofi input
+URL=$(rofi -dmenu -p "Paste YouTube URL")
+
+if [ -z "$URL" ]; then
+    exit 1
+fi
+
+# 2. Get the list of formats from your python script
+# We use -j to get JSON and jq to format it for Rofi
+# Make sure 'jq' is installed: sudo pacman -S jq
+CHOICE=$(yt-dlp -j "$URL" | jq -r '.formats[] | select(.vcodec != "none" and .height != null) | "\(.format_id) | \(.height)p | \(.ext) | \(.vcodec)"' | rofi -dmenu -i -p "Select Resolution")
+
+if [ -z "$CHOICE" ]; then
+    exit 1
+fi
+
+# 3. Extract the ID (the first part before the '|')
+ID=$(echo "$CHOICE" | cut -d' ' -f1)
+
+# 4. Download using Kitty so you can see the progress bar
+# We point to .venv/bin/python to use the installed packages
+kitty --class="ytdl-float" -e ~/.config/hypr/scripts/.venv/bin/python ~/.config/hypr/scripts/ytdl.py "$URL" "$ID"

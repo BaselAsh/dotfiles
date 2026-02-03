@@ -142,12 +142,6 @@
   min-width: 0;
   border: none;
   outline: none; /* Ensure no default outline */
-  /* Transition for background-color, color, outline, and box-shadow for smooth effect */
-  transition:
-    background-color 0.2s ease-in-out,
-    color 0.2s ease-in-out,
-    outline 0.2s ease-in-out,
-    box-shadow 0.2s ease-in-out;
   color: #babbf1; /* A calm color, consistent with custom-uptime */
   font-weight: 600; /* Slightly bolder for the timer, consistent with clock */
 }

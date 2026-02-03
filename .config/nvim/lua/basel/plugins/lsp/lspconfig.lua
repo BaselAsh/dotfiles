@@ -95,10 +95,27 @@ return {
             return vim.fn.exepath("python3") or "python"
         end
 
+        -- local function start_server(name, opts)
+        --     local root = opts.root_files or {}
+        --     opts.capabilities = capabilities
+        --     opts.root_dir = vim.fs.dirname(vim.fs.find(root, { upward = true })[1])
+        --     vim.lsp.start(vim.tbl_extend("force", { name = name, cmd = { name } }, opts))
+        -- end
         local function start_server(name, opts)
-            local root = opts.root_files or {}
+            local root_files = opts.root_files or {}
             opts.capabilities = capabilities
-            opts.root_dir = vim.fs.dirname(vim.fs.find(root, { upward = true })[1])
+
+            -- Attempt to find a root file (like .git or .sln)
+            local found_root = vim.fs.find(root_files, { upward = true })[1]
+
+            if found_root then
+                -- If found, use that directory
+                opts.root_dir = vim.fs.dirname(found_root)
+            else
+                -- CRITICAL FIX: If nothing found, fallback to the current directory
+                opts.root_dir = vim.fn.getcwd()
+            end
+
             vim.lsp.start(vim.tbl_extend("force", { name = name, cmd = { name } }, opts))
         end
 
@@ -184,6 +201,17 @@ return {
                             telemetry = { enable = false },
                         },
                     },
+                })
+            end,
+        })
+
+        -- C# (csharp-ls)
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = "cs",
+            callback = function()
+                start_server("csharp-ls", {
+                    cmd = { "csharp-language-server" },
+                    root_files = { "*.sln", "*.csproj", ".git" },
                 })
             end,
         })

@@ -32,7 +32,7 @@ export EDITOR="kitty nvim"
 export VISUAL="kitty nvim"
 
 # Hooking zoxide to the shell
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
 
 # Hooking FZF to the shell
 eval "$(fzf --zsh)"
@@ -127,7 +127,7 @@ alias minecraft="sh /home/baselash/Applications/SKLauncher/launch.sh"
 alias relax="dolphin /mnt/f/Relax/"
 alias brave="/var/lib/flatpak/exports/bin/com.brave.Browser"
 alias nvim-config="nvim /home/baselash/.config/nvim/"
-alias hypr-config="n ~/.config/hypr/hyprland.conf"
+alias hypr-config="n ~/.config/hypr/"
 alias waybar-config="n ~/.config/waybar/"
 alias kitty-config="n ~/.config/kitty/"
 alias tmux-config="n ~/.config/tmux/"
@@ -136,6 +136,8 @@ alias 2disk="cd /mnt/Data_2/"
 alias y="yazi"
 alias open="xdg-open"
 # alias darkmaster="cd /home/baselash/Work/DarkMasterEcom/"
+# YT in MPV
+alias ytv='mpv --ytdl-format="bestvideo[height<=1080]+bestaudio/best" '
 
 
 # Integrating UV with python
@@ -235,8 +237,8 @@ dev() {
 
     cd "$project_path" || return 1
 
-    # 1. Launch Brave to Workspace 1
-    hyprctl dispatch exec "[workspace 1 silent] brave http://localhost:5173"
+    # 1. Launch Chrome to Workspace 1
+    hyprctl dispatch exec "[workspace 1 silent] google-chrome-stable http://localhost:5173"
     
     sleep 1
 
@@ -252,6 +254,15 @@ dev() {
     hyprctl dispatch movetoworkspace 2
     tmux attach-session -t dev
 }
+
+# Focus Timer
+focus() {
+    local duration=${1:-90} # Default to 90 minutes
+    echo "Focus mode engaged for $duration minutes. Good luck, Basel."
+    sleep $((duration * 60)) && notify-send "Focus Session Complete" "Time to step away from the keyboard." && echo -e "\a"
+}
+
+
 
 # OH-MY-POSH config
 export PATH="$HOME/.local/bin:$PATH"
