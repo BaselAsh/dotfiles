@@ -1,9 +1,17 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=2000
+HISTSIZE=10000
 SAVEHIST=10000
+
+setopt SHARE_HISTORY          # Share history between different Kitty windows
+setopt HIST_IGNORE_ALL_DUPS   # Don't record the same command twice
+setopt HIST_IGNORE_SPACE      # Commands starting with a space won't be saved (good for passwords)
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks
+
 unsetopt beep notify
 bindkey -v
+# Search History
+bindkey "^R" history-incremental-search-backward
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/baselash/.zshrc'
@@ -224,35 +232,6 @@ function ccpp ()
   cat ~/.config/commands/app.cpp > ./"$1".cpp
 
   # mv ./app.cpp ./"$1".cpp
-}
-
-dev() {
-    local project_path="${1:-.}"
-    project_path=$(realpath "$project_path")
-
-    if [ ! -d "$project_path" ]; then
-        echo "Error: '$project_path' is not a valid directory."
-        return 1
-    fi
-
-    cd "$project_path" || return 1
-
-    # 1. Launch Chrome to Workspace 1
-    hyprctl dispatch exec "[workspace 1 silent] google-chrome-stable http://localhost:5173"
-    
-    sleep 1
-
-    # 2. Launch Alacritty to Workspace 4 AND run the server
-    # 'bash -c' allows us to run the command and keep the shell alive afterward
-    hyprctl dispatch exec "[workspace 4 silent] alacritty --working-directory $project_path -e bash -c 'npm run dev; exec bash'"
-
-    # 3. Setup TMUX session for Neovim
-    # -c ensures we are in the project root
-    tmux new-session -d -s dev -n code -c "$project_path" "nvim ."
-    
-    # 4. Move current terminal to Workspace 2 and attach
-    hyprctl dispatch movetoworkspace 2
-    tmux attach-session -t dev
 }
 
 # Focus Timer
