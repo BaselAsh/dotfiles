@@ -6,6 +6,17 @@ configuration {
     display-run: "   Run ";
     /* Disable history to keep it clean */
     disable-history: false;
+
+    kb-remove-to-eol: "";    /* Usually bound to Control+k */
+    kb-row-up: "Up,Control+k,Shift+Tab";
+    kb-row-down: "Down,Control+j";
+    kb-accept-entry: "Control+m,Return,KP_Enter";
+    terminal: "kitty";
+    
+    /* If you want purely vim-like movement without Ctrl */
+    /* Note: This may interfere with the search bar typing */
+    /* kb-row-up: "k"; */
+    /* kb-row-down: "j"; */
 }
 
 /* --- COLOR PALETTE --- */
