@@ -241,7 +241,32 @@ focus() {
     sleep $((duration * 60)) && notify-send "Focus Session Complete" "Time to step away from the keyboard." && echo -e "\a"
 }
 
+# Time-stamped Journal Function
+jj() {
+    local journal_dir="$HOME/Workspace/Journal/daily/"
+    # Format: YYYY-MM-DD_HHh.md (e.g., 2026-02-21_14h.md)
+    local filename="$(date +%Y-%m-%d).md"
+    
+    mkdir -p "$journal_dir"
+    
+    if [ ! -f "$journal_dir/$filename" ]; then
+        echo "# Log: $(date +'%Y-%m-%d at %I:%M %p')" > "$journal_dir/$filename"
+        echo -e "\n## Status Update\n- " >> "$journal_dir/$filename"
+    fi
+    
+    # Open in nvim, jump to end, and enter insert mode
+    nvim "+normal G" "+startinsert" "$journal_dir/$filename"
+}
 
+# Monthly Review: Usage 'mr 2026-02'
+mr() {
+    local search_month="$1"
+    local journal_dir="$HOME/Workspace/Journal/daily/"
+    
+    echo "--- Monthly Review for $search_month ---"
+    # Concatenate all files matching the month and clean up headers
+    cat "$journal_dir/$search_month"*.md | grep -v "^# " | grep -v "^---" | sed '/^$/d'
+}
 
 # OH-MY-POSH config
 export PATH="$HOME/.local/bin:$PATH"

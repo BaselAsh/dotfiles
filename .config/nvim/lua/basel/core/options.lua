@@ -40,7 +40,7 @@ end
 
 -- 2-space indentation for Web Development (PERN Stack)
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact", "css", "html" },
+    pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact", "css", "html", "dart" },
     group = indent_group,
     callback = function()
         set_indent(2)

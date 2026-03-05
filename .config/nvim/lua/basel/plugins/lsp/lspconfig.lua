@@ -215,5 +215,20 @@ return {
                 })
             end,
         })
+        -- Dart (Dart SDK)
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = "dart",
+            callback = function()
+                start_server("dartls", {
+                    cmd = { "dart", "language-server", "--protocol=lsp" },
+                    root_files = { "pubspec.yaml", ".git" },
+                    init_options = {
+                        closingLabels = true,
+                        flutterOutline = false, -- Set to true if you ever use Flutter
+                        onlyAnalyzeProjectsWithOpenFiles = true,
+                    },
+                })
+            end,
+        })
     end,
 }
