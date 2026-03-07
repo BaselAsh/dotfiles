@@ -8,6 +8,19 @@ setopt HIST_IGNORE_ALL_DUPS   # Don't record the same command twice
 setopt HIST_IGNORE_SPACE      # Commands starting with a space won't be saved (good for passwords)
 setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks
 
+# Function to sync Zsh vi-mode yank with wl-copy
+function vi-yank-to-clipboard() {
+    zle vi-yank
+    echo "$CUTBUFFER" | wl-copy
+}
+zle -N vi-yank-to-clipboard
+bindkey -M vicmd 'y' vi-yank-to-clipboard
+
+# Clipboard
+alias c='wl-copy'
+alias v='wl-paste'
+
+
 unsetopt beep notify
 bindkey -v
 # Search History
@@ -148,14 +161,15 @@ alias open="xdg-open"
 alias ytv='mpv --ytdl-format="bestvideo[height<=1080]+bestaudio/best" '
 
 
-# Integrating UV with python
-alias python="uv run python"
 
 
 # Show-off
-alias c="cmatrix"
 alias h="hollywood"
 
+
+# Example usage:
+# cat file.txt | c    <- Copies file content
+# v > new_file.txt    <- Pastes into a file
 
 # alias ears="bluetoothctl connect 98:34:8C:03:AA:D7"
 # alias cut-ears="bluetoothctl disconnect 98:34:8C:03:AA:D7"
