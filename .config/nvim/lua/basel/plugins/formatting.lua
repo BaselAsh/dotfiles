@@ -24,14 +24,15 @@ return {
                     css = { "prettier" },
                     json = { "prettier" },
                 },
-                formatters = {
-                    prettier = {
-                        prepend_args = { "--single-quote", "true" },
-                    },
-                    black = {
-                        prepend_args = { "--fast" },
-                    },
-                },
+                -- Formate js string to single quotes only
+                -- formatters = {
+                --     prettier = {
+                --         prepend_args = { "--single-quote", "true" },
+                --     },
+                --     black = {
+                --         prepend_args = { "--fast" },
+                --     },
+                -- },
             })
             vim.api.nvim_create_user_command("FormatToggle", function()
                 vim.g.disable_autoformat = not vim.g.disable_autoformat
