@@ -7,16 +7,21 @@ configuration {
     /* Disable history to keep it clean */
     disable-history: false;
 
+    kb-move-char-back: "";      /* Default is Control+h */
+    kb-move-char-forward: "";   /* Often conflicts with movement */
+    kb-mode-previous: "";       /* Default is often Control+h */
     kb-remove-to-eol: "";    /* Usually bound to Control+k */
+    kb-mode-complete: "";
+    kb-remove-char-back: "BackSpace";
     kb-row-up: "Up,Control+k,Shift+Tab";
     kb-row-down: "Down,Control+j";
+    kb-row-left: "Left,Control+h";
+    kb-row-right: "Right,Control+l";
     kb-accept-entry: "Control+m,Return,KP_Enter";
     terminal: "kitty";
     
     /* If you want purely vim-like movement without Ctrl */
     /* Note: This may interfere with the search bar typing */
-    /* kb-row-up: "k"; */
-    /* kb-row-down: "j"; */
 }
 
 /* --- COLOR PALETTE --- */
