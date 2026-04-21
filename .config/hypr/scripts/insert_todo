@@ -1,0 +1,9 @@
+#!/bin/bash
+
+TODO=$(rofi -dmenu -p "TODO:" -theme-str 'entry { placeholder: "What do you want to do?"; }')
+TODO_FILE="$HOME/Workspace/Journal/todo.md"
+
+if [ -n "$TODO" ]; then
+    printf "[ ] (%s) %s\n" "$(date '+%Y-%m-%d %H:%M')" "$TODO" >> $TODO_FILE
+    notify-send "Todo Saved" "$TODO"
+fi

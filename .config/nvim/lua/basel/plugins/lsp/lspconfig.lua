@@ -131,6 +131,10 @@ return {
                     settings = {
                         pylsp = {
                             plugins = {
+                                jedi = {
+                                    environment = "./.venv/bin/python",
+                                    extra_paths = { "./.venv/lib/python3.14/site-packages" },
+                                },
                                 pycodestyle = { maxLineLength = 100 },
                                 pyflakes = { enabled = true },
                                 black = { enabled = true },

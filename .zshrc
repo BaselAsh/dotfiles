@@ -157,8 +157,12 @@ alias 2disk="cd /mnt/Data_2/"
 alias y="yazi"
 alias open="xdg-open"
 # alias darkmaster="cd /home/baselash/Work/DarkMasterEcom/"
+
 # YT in MPV
 alias ytv='mpv --ytdl-format="bestvideo[height<=1080]+bestaudio/best" '
+
+## Automatically attach to 'default' session or create it
+alias tmx="tmux attach-session -t default || tmux new-session -s default"
 
 
 
@@ -280,6 +284,10 @@ mr() {
     echo "--- Monthly Review for $search_month ---"
     # Concatenate all files matching the month and clean up headers
     cat "$journal_dir/$search_month"*.md | grep -v "^# " | grep -v "^---" | sed '/^$/d'
+}
+
+launch() {
+    systemd-run --user --machine=$USER@.host --collect "$@"
 }
 
 # OH-MY-POSH config

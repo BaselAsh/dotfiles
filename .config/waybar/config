@@ -202,7 +202,7 @@
             "format": "{}",
             "interval": 10,
             "exec": "bash $HOME/.config/waybar/scripts/todo.sh",
-            "on-click": "kitty nvim ~/Workspace/Journal/todo.txt",
+            "on-click": "kitty nvim ~/Workspace/Journal/todo.md",
             "on-click-middle": "bash $HOME/.config/waybar/scripts/todo_done.sh",
             "max-length": 40,
             "signal": 1

@@ -1,9 +1,9 @@
 /* --- Global Styles --- */
 * {
   font-family:
-    'JetBrainsMono Nerd Font Propo', 'MonaspiceNe Nerd Font Propo',
-    'Font Awesome 6 Free', 'SF Pro Text', 'Inter',
-    'Segoe UI, NotoSans Nerd Font', sans-serif;
+    "JetBrainsMono Nerd Font Propo", "MonaspiceNe Nerd Font Propo",
+    "Font Awesome 6 Free", "SF Pro Text", "Inter",
+    "Segoe UI, NotoSans Nerd Font", sans-serif;
   font-size: 10px;
   min-height: 0;
   padding-right: 0px;
@@ -335,7 +335,7 @@ window#waybar.static-info-bar {
 }
 
 #custom-ssd {
-  color: #2196f3;
+  color: #89ddff;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   margin-left: 3px;
@@ -354,7 +354,7 @@ window#waybar.static-info-bar {
 #custom-todo {
   background-color: #1a1b26;
   padding: 2px 10px;
-  margin: 2px 0px;
+  margin: 2px 2px;
   border-radius: 6px; /* This module is always rounded */
   min-width: 50px;
   border: none;

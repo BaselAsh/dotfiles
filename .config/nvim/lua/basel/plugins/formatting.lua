@@ -12,7 +12,7 @@ return {
                     return { timeout_ms = 5000, lsp_fallback = true, quiet = true }
                 end,
                 formatters_by_ft = {
-                    python = { "ruff_format", "ruff_fix", "black" },
+                    python = { "ruff_format", "ruff_fix" },
                     lua = { "stylua" },
                     c = { "clang_format" },
                     cpp = { "clang_format" },
@@ -24,15 +24,11 @@ return {
                     css = { "prettier" },
                     json = { "prettier" },
                 },
-                -- Formate js string to single quotes only
-                -- formatters = {
-                --     prettier = {
-                --         prepend_args = { "--single-quote", "true" },
-                --     },
-                --     black = {
-                --         prepend_args = { "--fast" },
-                --     },
-                -- },
+                formatters = {
+                    black = {
+                        prepend_args = { "--fast" },
+                    },
+                },
             })
             vim.api.nvim_create_user_command("FormatToggle", function()
                 vim.g.disable_autoformat = not vim.g.disable_autoformat
@@ -56,7 +52,6 @@ return {
                 typescript = { "eslint_d" },
                 javascriptreact = { "eslint_d" },
                 typescriptreact = { "eslint_d" },
-                -- ✅ Replaced clang_check with clangtidy
                 c = { "clangtidy" },
                 cpp = { "clangtidy" },
             }

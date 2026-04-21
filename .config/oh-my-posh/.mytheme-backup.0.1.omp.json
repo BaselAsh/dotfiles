@@ -31,7 +31,7 @@
           "type": "os"
         },
         {
-          "background": "#89ddff",
+          "background": "#00C7FC",
           "foreground": "#011627",
           "powerline_symbol": "\ue0b0",
           "style": "powerline",
@@ -156,7 +156,7 @@
         },
         {
           "foreground": "#B6D6F2",
-          "leading_diamond": "<#89ddff> \uf07b </><#B6D6F2> in </>",
+          "leading_diamond": "<#00C7FC> \uf07b </><#B6D6F2> in </>",
           "options": {
             "folder_icon": " \uf07c ",
             "folder_separator_icon": " \uf061 ",

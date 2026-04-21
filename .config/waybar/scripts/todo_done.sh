@@ -1,7 +1,7 @@
 #!/bin/bash
 # ~/.config/waybar/scripts/todo_done.sh
 
-TODO_FILE="$HOME/Workspace/Journal/todo.txt"
+TODO_FILE="$HOME/Workspace/Journal/todo.md"
 LINE_TRACKER="/tmp/waybar_todo_line"
 
 if [[ -f "$LINE_TRACKER" ]]; then

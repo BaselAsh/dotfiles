@@ -1,7 +1,7 @@
 #!/bin/bash
 # ~/.config/waybar/scripts/todo.sh
 
-TODO_FILE="$HOME/Workspace/Journal/todo.txt"
+TODO_FILE="$HOME/Workspace/Journal/todo.md"
 INDEX_FILE="/tmp/waybar_todo_index"
 LINE_TRACKER="/tmp/waybar_todo_line"
 
