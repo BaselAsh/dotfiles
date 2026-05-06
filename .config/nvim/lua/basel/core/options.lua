@@ -3,7 +3,8 @@ vim.cmd("let g:netrw_liststyle = 3")
 local opt = vim.opt
 
 opt.number = true
-
+-- The cursor stays a block in insert mode
+vim.opt.guicursor = "n-v-c-i:block"
 -- Tabs & indentation
 -- For most programming languages
 opt.tabstop = 4
@@ -92,5 +93,5 @@ if vim.fn.isdirectory(undodir) == 0 then
     vim.fn.mkdir(undodir, "p", 0700)
 end
 
-vim.opt.undodir = undodir
-vim.opt.undofile = true
+opt.undodir = undodir
+opt.undofile = true
