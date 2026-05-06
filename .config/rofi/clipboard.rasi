@@ -51,7 +51,7 @@ listview {
     border: 0px;
     padding: 20px;
     margin: 10px;
-    columns: 3; /* Two columns side by side */
+    columns: 3; /* 3 columns side by side */
     lines: 3;
     background-color: @bg-col;
 }
