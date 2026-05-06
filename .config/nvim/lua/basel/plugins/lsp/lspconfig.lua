@@ -125,17 +125,26 @@ return {
             callback = function()
                 local root_dir =
                     vim.fs.dirname(vim.fs.find({ "pyproject.toml", "setup.py", ".git" }, { upward = true })[1])
+
+                -- Fallback to current working directory if root_dir isn't found
+                root_dir = root_dir or vim.fn.getcwd()
+
+                -- Construct the absolute path to the venv Python executable
+                local venv_python = root_dir .. "/.venv/bin/python"
+
                 start_server("pylsp", {
                     cmd = { "pylsp" },
-                    root_files = { "pyproject.toml", "setup.py", ".git" },
+                    root_dir = root_dir, -- Good practice to explicitly pass this to the LSP
                     settings = {
                         pylsp = {
                             plugins = {
                                 jedi = {
-                                    environment = "./.venv/bin/python",
-                                    extra_paths = { "./.venv/lib/python3.14/site-packages" },
+                                    -- Use the absolute path. Jedi will typically resolve the correct site-packages automatically from this.
+                                    environment = venv_python,
                                 },
-                                pycodestyle = { maxLineLength = 100 },
+                                -- Explicitly enable signature help
+                                jedi_signature_help = { enabled = true },
+                                pycodestyle = { maxLineLength = 120 },
                                 pyflakes = { enabled = true },
                                 black = { enabled = true },
                             },
