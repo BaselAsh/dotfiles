@@ -36,7 +36,10 @@ if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
 fi
 
 autoload -Uz compinit
-compinit
+for dump in ~/.zcompdump(N.m1); do
+    compinit
+done
+compinit -C
 # End of lines added by compinstall
 
 
@@ -218,13 +221,13 @@ function venv-create ()
 function venv-activate ()
 {
   if [ "$#" -ne 1 ]; then
-    source venv/bin/activate
-    echo "Activated the virutal environment called (venv)"
+# source venv/bin/activate  # commented out by conda initialize
+    echo "Activated the virtual environment called (venv)"
     return 0
   fi
 
   local name="$1"
-  source "$name"/bin/activate
+# source "$name"/bin/activate  # commented out by conda initialize
 }
 
 function runserver ()
@@ -286,6 +289,10 @@ mr() {
     cat "$journal_dir/$search_month"*.md | grep -v "^# " | grep -v "^---" | sed '/^$/d'
 }
 
+nman() {
+    nvim -c "Man $1" -c "only"
+}
+
 launch() {
     systemd-run --user --machine=$USER@.host --collect "$@"
 }
@@ -296,5 +303,25 @@ export PATH="$HOME/.local/bin:$PATH"
 # Export ttyper 
 export PATH="$HOME/.cargo/bin:$PATH"
 # eval "$(oh-my-posh init zsh)"
-eval "$(oh-my-posh init zsh --config /home/baselash/.config/oh-my-posh/.mytheme.omp.json)"
+# eval "$(oh-my-posh init zsh --config /home/baselash/.config/oh-my-posh/.mytheme.omp.json)"
+source ~/.oh-my-posh.zsh
 # /var/lib/flatpak/exports/bin
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+conda-init() {
+    __conda_setup="$('/home/baselash/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/home/baselash/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "/home/baselash/anaconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/baselash/anaconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+}
+# <<< conda initialize <<<
+
+export UV_LINK_MODE=copy
