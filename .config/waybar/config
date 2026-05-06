@@ -5,7 +5,8 @@
       "position": "top",
       "exclusive": true,
       "output": "LVDS-1", 
-      "margin-bottom": -10,
+      "height": 20,
+      "margin-bottom": 0,
       "spacing" : 0,
       "modules-left": [
       "hyprland/workspaces",
@@ -180,7 +181,7 @@
       "position": "top",
       "exclusive": true,
       "output": "VGA-1", 
-      "margin-bottom": -10,
+      "margin-bottom": 0,
       "spacing" : 0,
       "modules-left":[
           "custom/ssd",
@@ -276,7 +277,7 @@
         "layer": "top",
         "exclusive": true,
         "position": "bottom",
-        "height": 24, 
+        "height": 18, 
         "output": "VGA-1", // Strictly targets your VGA screen
         "modules-left": ["custom/hostname", "custom/kernel"],
         "modules-center": ["custom/ip", "custom/mac"],
