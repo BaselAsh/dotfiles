@@ -49,3 +49,10 @@ vim.keymap.set("n", "<leader>Ft", "<cmd>FormatToggle<CR>", { desc = "Toggle Form
 
 -- Toggle undotree with <leader>u
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undo Tree" })
+
+-- Change CWD to the directory of the current buffer
+vim.keymap.set("n", "<leader>cd", "<cmd>cd %:p:h<CR><cmd>pwd<CR>", { desc = "CD to current file's directory" })
+-- Quickly type :cd followed by a space to start navigating
+vim.keymap.set("n", "<leader>cc", ":cd ", { desc = "Start :cd command" })
+-- This puts the path in the command line but does NOT press Enter
+vim.keymap.set("n", "<leader>cx", ":cd %:p:h/", { desc = "Prepare to CD into subfolder" })

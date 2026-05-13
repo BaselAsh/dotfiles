@@ -37,9 +37,12 @@ return {
             underline = true,
             severity_sort = true,
             float = {
-
+                focusable = false,
+                style = "minimal",
                 border = "rounded",
                 source = "always",
+                header = "",
+                prefix = "",
             },
         })
 
@@ -72,7 +75,10 @@ return {
                 vim.api.nvim_create_autocmd("BufWritePre", {
                     buffer = event.buf,
                     callback = function()
-                        vim.lsp.buf.format({ async = false })
+                        vim.lsp.buf.format({
+                            bufnr = event.buf,
+                            async = false,
+                        })
                     end,
                 })
             end,
@@ -228,6 +234,7 @@ return {
                 })
             end,
         })
+
         -- Dart (Dart SDK)
         vim.api.nvim_create_autocmd("FileType", {
             pattern = "dart",
@@ -239,6 +246,24 @@ return {
                         closingLabels = true,
                         flutterOutline = false, -- Set to true if you ever use Flutter
                         onlyAnalyzeProjectsWithOpenFiles = true,
+                    },
+                })
+            end,
+        })
+
+        -- Rust (rust-analyzer)
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = "rust",
+            callback = function()
+                start_server("rust-analyzer", {
+                    cmd = { "rustup", "run", "stable", "rust-analyzer" },
+                    root_files = { "Cargo.toml", ".git" },
+                    settings = {
+                        ["rust-analyzer"] = {
+                            check = {
+                                command = "clippy", -- Better linting than the default 'check'
+                            },
+                        },
                     },
                 })
             end,
