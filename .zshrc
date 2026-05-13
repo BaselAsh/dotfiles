@@ -93,7 +93,8 @@ alias lS='eza --only-files --sort=size --long --reverse --icons'
 alias grep='grep --color=auto'
 # PS1='[\u@\h \W]\$ '
 
-PROMPT="%~ >> "
+PROMPT='%F{6}╭─%f %F{5}%~%f
+%F{6}╰─%f %F{4}➜%f '
 
 # Greeting
 #figlet "Welcome, Basel !"
@@ -298,13 +299,13 @@ launch() {
 }
 
 # OH-MY-POSH config
-export PATH="$HOME/.local/bin:$PATH"
+# export PATH="$HOME/.local/bin:$PATH"
 
 # Export ttyper 
 export PATH="$HOME/.cargo/bin:$PATH"
 # eval "$(oh-my-posh init zsh)"
 # eval "$(oh-my-posh init zsh --config /home/baselash/.config/oh-my-posh/.mytheme.omp.json)"
-source ~/.oh-my-posh.zsh
+# source ~/.oh-my-posh.zsh
 # /var/lib/flatpak/exports/bin
 
 # >>> conda initialize >>>
@@ -325,3 +326,5 @@ conda-init() {
 # <<< conda initialize <<<
 
 export UV_LINK_MODE=copy
+
+[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
