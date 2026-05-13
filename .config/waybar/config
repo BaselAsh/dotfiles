@@ -169,9 +169,9 @@
       "custom/pomodoro": {
         "format": "{}",
         "return-type": "json",
-        "exec": "sleep 1 && /home/baselash/.cargo/bin/waybar-module-pomodoro --no-work-icons -w 60",
-        "on-click": "/home/baselash/.cargo/bin/waybar-module-pomodoro toggle",
-        "on-click-right": "/home/baselash/.cargo/bin/waybar-module-pomodoro reset",
+        "exec": "sleep 1 && ~/.local/bin/waybar-module-pomodoro --no-work-icons -w 60",
+        "on-click": "~/.local/bin/waybar-module-pomodoro toggle",
+        "on-click-right": "~/.local/bin/waybar-module-pomodoro reset",
       },
 
     },
