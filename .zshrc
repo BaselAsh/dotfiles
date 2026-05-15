@@ -328,3 +328,14 @@ conda-init() {
 export UV_LINK_MODE=copy
 
 [[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+
+# Editing command in editor
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
+# ls after cd automatically
+chpwd() {
+    ls
+}
+
