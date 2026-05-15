@@ -291,7 +291,26 @@ mr() {
 }
 
 nman() {
-    nvim -c "Man $1" -c "only"
+    # If two arguments are provided (section and name)
+    if [ $# -eq 2 ]; then
+        nvim -c "Man $1 $2" -c "only"
+    # If only one argument is provided
+    else
+        nvim -c "Man $1" -c "only"
+    fi
+}
+
+vman() {
+    # -M starts in nomodifiable mode (safe for manuals)
+    # +runtime... loads the man plugin
+    # +Man! opens the page
+    vim -M +":runtime ftplugin/man.vim" +":Man ${1} ${2}" +only
+}
+
+# Using 'col -b' to strip backspaces/formatting characters 
+# so vi doesn't show '^H' everywhere.
+viman() {
+    man "$@" | col -b | vi -R -
 }
 
 launch() {
