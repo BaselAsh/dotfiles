@@ -30,6 +30,32 @@ bindkey "^R" history-incremental-search-backward
 zstyle :compinstall filename '/home/baselash/.zshrc'
 # export FUNCNEST=500
 
+# Hook into the Zsh Vi-mode paste mechanism
+function vi-put-before-wrapper() {
+    if command -v wl-paste &>/dev/null; then
+        # For Wayland/Hyprland: Pull system clipboard into Zsh buffer
+        CUTBUFFER=$(wl-paste -n)
+    elif command -v xclip &>/dev/null; then
+        # Fallback for X11
+        CUTBUFFER=$(xclip -o -sel clipboard)
+    fi
+    zle vi-put-before
+}
+
+function vi-put-after-wrapper() {
+    if command -v wl-paste &>/dev/null; then
+        CUTBUFFER=$(wl-paste -n)
+    elif command -v xclip &>/dev/null; then
+        CUTBUFFER=$(xclip -o -sel clipboard)
+    fi
+    zle vi-put-after
+}
+
+# Replace the default 'p' and 'P' bindings in Vi command mode
+zle -N vi-put-before-wrapper
+zle -N vi-put-after-wrapper
+bindkey -M vicmd 'p' vi-put-after-wrapper
+bindkey -M vicmd 'P' vi-put-before-wrapper
 # Auto-start Hyprland on TTY1
 if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	exec start-hyprland

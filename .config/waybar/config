@@ -71,7 +71,7 @@
         "format-icons":{
             "on":"󰂯",
             "off": "󰂲",
-            "connected": "󰂱",
+            "connected": "󰂱 ",
             },
         "on-click": "blueman-manager",
         "tooltip-format-connected":"{device_enumerate}"
@@ -80,7 +80,8 @@
 
       "clock": {
         "timezone": "Africa/Cairo",
-        "tooltip": false,
+        "tooltip": true,
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "format": "{:%H:%M:%S  -  %A, %d}",
         "interval": 1
       },

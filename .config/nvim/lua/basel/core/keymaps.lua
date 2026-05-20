@@ -56,3 +56,18 @@ vim.keymap.set("n", "<leader>cd", "<cmd>cd %:p:h<CR><cmd>pwd<CR>", { desc = "CD 
 vim.keymap.set("n", "<leader>cc", ":cd ", { desc = "Start :cd command" })
 -- This puts the path in the command line but does NOT press Enter
 vim.keymap.set("n", "<leader>cx", ":cd %:p:h/", { desc = "Prepare to CD into subfolder" })
+
+-- Assumes you have a Makefile in your project root
+vim.keymap.set("n", "<F5>", ":wa<CR>:!make && ./$(basename % .c)<CR>", { desc = "Save, Build, and Run" })
+
+-- Toggle between .c and .h files instantly
+vim.keymap.set("n", "<leader>a", function()
+    local file_ext = vim.fn.expand("%:e")
+    if file_ext == "c" then
+        vim.cmd("edit %:r.h")
+    elseif file_ext == "h" then
+        vim.cmd("edit %:r.c")
+    else
+        print("Not a C source or header file")
+    end
+end, { desc = "Switch between C header/source" })

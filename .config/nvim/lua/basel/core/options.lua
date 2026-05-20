@@ -98,3 +98,4 @@ opt.undofile = true
 
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full,full"
+
