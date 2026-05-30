@@ -81,7 +81,7 @@
       "clock": {
         "timezone": "Africa/Cairo",
         "tooltip": true,
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%H:%M:%S  -  %A, %d}",
         "interval": 1
       },
@@ -145,9 +145,9 @@
      },
 
       "battery": {
-            "interval":2,
+            "interval":1,
             "states": {
-                // "good": 95,
+                "good": 95,
                 "warning": 30,
                 "critical": 15
             },

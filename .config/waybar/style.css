@@ -289,11 +289,14 @@
 }
 
 /* --- Tooltip Styles --- */
-tooltip {
+#tooltip {
+  font-family:
+    "JetBrainsMono Nerd Font Propo", "MonaspiceNe Nerd Font Propo",
+    "Font Awesome 6 Free", "SF Pro Text", "Inter",
+    "Segoe UI, NotoSans Nerd Font", sans-serif;
   background-color: #1a1b26;
   color: #dddddd;
   padding: 5px 12px;
-  margin: 5px 0px;
   border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
