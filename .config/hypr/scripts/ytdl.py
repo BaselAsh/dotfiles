@@ -1,4 +1,5 @@
 import sys
+
 import yt_dlp
 
 
@@ -11,7 +12,7 @@ class YTDownloader:
             return "N/A"
         for unit in ["B", "KB", "MB", "GB"]:
             if bytes < 1024:
-                return f"{bytes:.1f}{unit}"
+                return f"{bytes:.1f} {unit}"
             bytes /= 1024
         return f"{bytes:.1f}TB"
 
@@ -50,10 +51,11 @@ class YTDownloader:
 
     def download(self, url, format_id):
         opts = {
-            "format": f"{format_id}+bestaudio/best",
+            "format": f"({format_id})[vcodec^=avc1]+bestaudio/best",
             "outtmpl": "~/Storage/Videos/%(title)s.%(ext)s",
             "progress_hooks": [self.progress_hook],
             "quiet": True,
+            "extractor_args": {"youtube": {"remote-components": ["ejs:github"]}},
         }
         with yt_dlp.YoutubeDL(opts) as ydl:
             ydl.download([url])
