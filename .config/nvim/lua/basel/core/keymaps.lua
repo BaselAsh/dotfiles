@@ -61,7 +61,7 @@ vim.keymap.set("n", "<leader>cx", ":cd %:p:h/", { desc = "Prepare to CD into sub
 vim.keymap.set("n", "<F5>", ":wa<CR>:!make && ./$(basename % .c)<CR>", { desc = "Save, Build, and Run" })
 
 -- Toggle between .c and .h files instantly
-vim.keymap.set("n", "<leader>a", function()
+vim.keymap.set("n", "<leader>h", function()
     local file_ext = vim.fn.expand("%:e")
     if file_ext == "c" then
         vim.cmd("edit %:r.h")
